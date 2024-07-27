@@ -1,22 +1,19 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { getPartnerClass, getPartnerSchool } from '../api/partner.api';
-import { getParam } from '../api/request';
-import { getManageMenu } from '../api/menu.api';
-import { getProduct } from '../api/product.api';
-import { status } from '../components/core/variable/variable';
-import { getAgent } from '../api/custom.api';
+import { getAgent, getPartner } from '../api/custom.api';
 
 // First, create the thunk
 export const fetchUserById = createAsyncThunk('users/fetchUserById', async () => {
    
     const getAgents = await getAgent()
+    const getPartners = await getPartner()
+
     return {
-        agent:getAgents?.data?.data
+        agent:getAgents?.data?.data,
+        parent: getPartners?.data?.data
     }
 })
 
 const initialState = {
-    param: [],
 }
 
 const usersSlice = createSlice({

@@ -23,10 +23,16 @@ export const FormChild: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập tuổi" name="age" label="Tuổi thai (Tuần)" required />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="average" label="Giá trị trung bình (mm)" required/>
+                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="averageFemur" label="Giá trị trung bình xương đùi" required/>
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limit" label="Ngưỡng giới hạn (mm)" required/>
+                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limitFemur" label="Ngưỡng giới hạn xương đùi" required/>
+                </Col>
+                <Col span={8} >
+                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="averageNose" label="Giá trị trung bình xương mũi" required/>
+                </Col>
+                <Col span={8} >
+                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limitNose" label="Ngưỡng giới hạn xương mũi" required/>
                 </Col>
             </Row>
 

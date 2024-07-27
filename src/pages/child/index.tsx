@@ -36,7 +36,7 @@ export default function Child() {
             ...pagination,
             ...params
         }
-        getChild().then((ress: any) => {
+        getChild(combinedParams).then((ress: any) => {
             let conf = ress?.data?.data
             setData(conf)
 
@@ -56,12 +56,13 @@ export default function Child() {
             {/* <BaseFieldset title="Quản lý thực đơn"> */}
             <FormSearch
                 onSearch={onSearch}
+                notDate
             >
                 <Col span={4}>
                     <BaseFormInput
-                        type="option"
-                        name="title"
-                        placeholder="Trạng thái"
+                        type="input"
+                        name="age"
+                        placeholder="Tuần tuổi"
 
                     />
                 </Col>

@@ -12,8 +12,8 @@ import { getCustom } from "../../api/custom.api"
 export default function Customer() {
     const [data, setData] = useState([])
     const [pagination, setPagination] = useState(paginationShared)
-    const dataModal = useSelector((state: any) => state.global.dataModal);
-    const statusModal = useSelector((state: any) => state.global.statusModal)
+    const dataModal = useSelector((state: any) => state.global.dataModal)
+    const agentStore = useSelector((state: any) => state.usersSlice.param.agent)
     const [valueSearch, setValueSearch] = useState<any>()
 
     const fetchData = useCallback((pagination: any, params: any) => {
@@ -36,7 +36,7 @@ export default function Customer() {
     }
     useEffect(() => {
         fetchData(paginationShared, valueSearch)
-    }, [dataModal, statusModal])
+    }, [dataModal])
     return (
         <>
             <FormSearch
@@ -59,7 +59,7 @@ export default function Customer() {
                 </Col>
             </FormSearch>
             <BaseTable
-                columType={ColumnCustomer}
+                columType={ColumnCustomer(agentStore)}
                 dataSource={data}
                 user
                 pagination={pagination}

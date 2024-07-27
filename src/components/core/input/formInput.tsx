@@ -48,7 +48,6 @@ export const FormInputStyle = styled.div`
     }
 
   .ant-col.ant-form-item-label {
-    width: 10rem;
     text-align: inherit;
     ::after {
       display: none !important;

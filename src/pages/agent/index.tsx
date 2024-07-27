@@ -12,9 +12,10 @@ import { ColumnAgent } from "./column.agent"
 export default function City() {
     const [data, setData] = useState([])
     const [pagination, setPagination] = useState(paginationShared)
-    const dataModal = useSelector((state: any) => state.global.dataModal);
-    const statusModal = useSelector((state: any) => state.global.statusModal)
+    const dataModal = useSelector((state: any) => state.global.dataModal)
+    const parentStore = useSelector((state: any) => state.usersSlice.param.parent)
     const [valueSearch, setValueSearch] = useState<any>()
+    
 
     const fetchData = useCallback((pagination: any, params: any) => {
         const combinedParams = {
@@ -36,7 +37,7 @@ export default function City() {
     }
     useEffect(() => {
         fetchData(paginationShared, valueSearch)
-    }, [dataModal, statusModal])
+    }, [dataModal])
     return (
         <>
             <FormSearch
@@ -59,7 +60,7 @@ export default function City() {
                 </Col>
             </FormSearch>
             <BaseTable
-                columType={ColumnAgent}
+                columType={ColumnAgent(parentStore)}
                 dataSource={data}
                 user
                 pagination={pagination}

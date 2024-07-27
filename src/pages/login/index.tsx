@@ -44,7 +44,7 @@ const LoginForm = () => {
     console.log("infoLogin",infoLogin);
     if (infoLogin?.data?.code == '200') {
       navigate("/")
-      // dispatch(fetchUserById())
+      dispatch(fetchUserById())
     }
     else {
       message.error('Sai tên đăng nhập hoặc tài khoản')

@@ -13,11 +13,7 @@ import Notifi from '../noti';
 import { blockCustom, changeCustom } from '../../../api/custom.api';
 import ModalCore from '../modal/modalCore';
 import BaseFormInput from '../input/formInput';
-import './style.css'
-import ModalCoreFix from '../modal/modalCoreFix';
-import axios from 'axios';
-import ColumnGroup from 'antd/es/table/ColumnGroup';
-import Column from 'antd/es/table/Column';
+// import './style.css'
 
 export interface Pagination {
     current?: number | string
@@ -160,13 +156,6 @@ export const BaseTable = ({
             total: pagination?.total
         })
     }
-    const onFinish = (values: any) => {
-        let url = `customer/change_type?cust_id=${typeC?.id}&cust_type=${values?.custType}`
-        changeCustom(url).then((res) => {
-            Notifi('succ', `Thay đổi công bản ghi`);
-            store.dispatch(modalFalse())
-        })
-    }
     useEffect(() => {
         form.setFieldsValue({ custType: typeC?.custType })
     }, [typeC])
@@ -192,7 +181,7 @@ export const BaseTable = ({
                 onChange={handleTableChange}
                 locale={{ emptyText: 'Không có dữ liệu hiển thị' }}
                 size='middle'
-                style={{ height: "500px" }}
+                // style={{ height: "500px" }}
             />
             {/* {dataSource.length != 0 ? `Hiện thị ${pagination?.pageSize} bản ghi trên tổng số ${pagination?.total} ` : ""} */}
         </>

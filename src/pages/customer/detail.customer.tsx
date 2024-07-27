@@ -4,12 +4,20 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { FormCustom } from './form.customer';
 import { configCustome } from '../../api/custom.api';
 import { BaseTable } from '../../components/core/table/tableCore';
-import { ColumnInfoCus } from './column.customer';
+import { ColumnInfo020, ColumnInfoChild, ColumnInfoMature } from './column.customer';
+import { BorderColor } from '../../components/core/variable/variable';
 
 export const AddFormStyle = styled.div`
   background-color: #fff;
   overflow: scroll;
 `
+
+export const DivStyleInfo = styled.div`
+    border:2px solid ${BorderColor};
+    padding:10px;
+    margin-bottom:10px
+`
+
 
 export default function DetailCustomer() {
     const navigate = useNavigate()
@@ -37,13 +45,37 @@ export default function DetailCustomer() {
                 <Row gutter={8}>
                     <Col span={24}><h2>2.Lịch sử</h2></Col>
                     <Col span={24}>
+                        <DivStyleInfo>
+                        <b>Danh sách đối tượng tư vấn thuộc nhóm thai nhi</b>
                         <BaseTable
-                            columType={ColumnInfoCus}
+                            columType={ColumnInfoChild}
                             dataSource={[]}
-                            notAction
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />
+                        </DivStyleInfo>
+                    </Col>
+                    <Col span={24}>
+                        <DivStyleInfo>
+                        <b>Danh sách đối tượng tư vấn thuộc nhóm 0-20 tuổi</b>
+                        <BaseTable
+                            columType={ColumnInfo020}
+                            dataSource={[]}
+                            // pagination={pagination}
+                            // onChangePaniga={onChangePaniga}
+                        />
+                        </DivStyleInfo>
+                    </Col>
+                    <Col span={24}>
+                        <DivStyleInfo>
+                        <b>Danh sách đối tượng tư vấn thuộc nhóm trưởng hành</b>
+                        <BaseTable
+                            columType={ColumnInfoMature}
+                            dataSource={[]}
+                            // pagination={pagination}
+                            // onChangePaniga={onChangePaniga}
+                        />
+                        </DivStyleInfo>
                     </Col>
                 </Row>
             </Card>

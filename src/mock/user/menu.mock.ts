@@ -2,14 +2,23 @@ import type { MenuList } from '../../interface/layout/menu.interface';
 
 
 export const mockMenuList: MenuList = [
-  // {
-  //   code: 'report',
-  //   label: {
-  //     en_US: 'Báo cáo',
-  //   },
-  //   icon: 'user',
-  //   path: '/report',
-  // },
+  {
+    code: 'partner',
+    label: {
+      en_US: 'Quản lý đối tác',
+    },
+    icon: 'permission',
+    path: '/partner',
+  },
+
+  {
+    code: 'agent',
+    label: {
+      en_US: 'Quản lý đại lý',
+    },
+    icon: 'city',
+    path: '/agent',
+  },
 
   {
     code: 'customer',
@@ -35,22 +44,7 @@ export const mockMenuList: MenuList = [
   //   icon: 'permission',
   //   path: '/manageMenu3.2',
   // },
-  {
-    code: 'partner',
-    label: {
-      en_US: 'Quản lý đối tác',
-    },
-    icon: 'permission',
-    path: '/partner',
-  },
-  {
-    code: 'agent',
-    label: {
-      en_US: 'Quản lý đại lý',
-    },
-    icon: 'city',
-    path: '/agent',
-  },
+  
   {
     code: 'adult',
     label: {
