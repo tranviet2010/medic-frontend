@@ -3,6 +3,7 @@ import axiosInstance from "./request";
 export const getChild= (config?: any) => axiosInstance.get('nose-femur', { params: config });
 export const getAdult= (config?: any) => axiosInstance.get('height', { params: config });
 export const editComment = (data: any) => axiosInstance.put('comment', data);
+export const getResult = (config?: any) => axiosInstance.get('result', { params: config });
 
 
 export const configCustomer = {
@@ -44,6 +45,22 @@ export const configPartner = {
     urlEdit: "partner",
     urlAdd: "partner",
     urlGetInfo: "partner",
+}
+
+export const configProduct = {
+    navigate: "/product",
+    // urlInfo: "partner",
+    urlEdit: "product",
+    urlAdd: "product",
+    urlGetInfo: "product",
+}
+
+export const configCourse = {
+    navigate: "/course",
+    // urlInfo: "partner",
+    urlEdit: "course",
+    urlAdd: "course",
+    urlGetInfo: "course",
 }
 
 export const configNation = {

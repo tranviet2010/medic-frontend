@@ -19,6 +19,7 @@
     "@types/react-redux": "^7.1.25",
     "@types/styled-components": "^5.1.26",
     "antd": "^5.8.2",
+    "antd-img-crop": "^4.22.0",
     "axios": "^1.4.0",
     "dayjs": "^1.11.9",
     "moment": "^2.29.4",

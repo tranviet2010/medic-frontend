@@ -9,7 +9,7 @@ import Notifi from '../components/core/noti';
 const axiosInstance = axios.create({
     // baseURL: process.env.REACT_APP_API_BASE,
     // baseURL: "http://localhost:198/api/v1/",
-    baseURL: "http://172.104.189.80:3003/api/v1/",
+    baseURL: "http://172.104.189.80:198/api/v1/",
     timeout: 1000,
 })
 

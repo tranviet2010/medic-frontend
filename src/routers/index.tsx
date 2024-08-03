@@ -36,6 +36,14 @@ const RouterAgent = lazy(() => import(/* webpackChunkName: "route-permission"*/ 
 const RouterAgentAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/agent/add.agent'));
 const RouterAgentEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/agent/edit.agent'));
 
+const RouterProduct = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/product'));
+const RouterProductAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/product/add.product'));
+const RouterProductEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/product/edit.product'));
+
+const RouterCourse = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/course'));
+const RouterCourseAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/course/add.course'));
+const RouterCourseEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/course/edit.course'));
+
 
 
 
@@ -113,6 +121,30 @@ const routeList: RouteObject[] = [
             {
                 path: 'agent/edit',
                 element: <RouterAgentEdit />,
+            },
+            {
+                path: 'product',
+                element: <RouterProduct />,
+            },
+            {
+                path: 'product/add',
+                element: <RouterProductAdd />,
+            },
+            {
+                path: 'product/edit',
+                element: <RouterProductEdit />,
+            },
+            {
+                path: 'course',
+                element: <RouterCourse />,
+            },
+            {
+                path: 'course/add',
+                element: <RouterCourseAdd />,
+            },
+            {
+                path: 'course/edit',
+                element: <RouterCourseEdit />,
             },
             {
                 path: 'mature',

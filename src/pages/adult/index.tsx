@@ -62,22 +62,22 @@ export default function Adult() {
             <Table dataSource={data} bordered>
                 <Column title="" key="age" render={(value)=>`${convertAge(value.age)} ${convertAgeMonth(value.month_age)}`} width={150} align="center"/>
                 <ColumnGroup title="CÂN NẶNG (KG)">
-                    <Column title="Trên chuẩn độ 3" dataIndex="up_weight3" key="up_weight" width={50} align="center"/>
-                    <Column title="Trên chuẩn độ 2" dataIndex="up_weight2" key="up_weight" width={50} align="center"/>
-                    <Column title="Trên chuẩn độ 1" dataIndex="up_weight1" key="up_weight" width={50} align="center"/>
+                    <Column title="Trên chuẩn độ 3" dataIndex="up_weight" key="up_weight" width={50} align="center" render={(value)=>value.up_weight3}/>
+                    <Column title="Trên chuẩn độ 2" dataIndex="up_weight" key="up_weight" width={50} align="center" render={(value)=>value.up_weight2}/>
+                    <Column title="Trên chuẩn độ 1" dataIndex="up_weight" key="up_weight" width={50} align="center" render={(value)=>value.up_weight1}/>
                     <Column title="Chuẩn" dataIndex="weight" key="weight" align="center" />
-                    <Column title="Dưới chuẩn độ 1" dataIndex="dow_weight1" key="dow_weight" width={50} align="center"/>
-                    <Column title="Dưới chuẩn độ 2" dataIndex="dow_weight2" key="dow_weight" width={50} align="center"/>
-                    <Column title="Dưới chuẩn độ 3" dataIndex="dow_weight3" key="dow_weight" width={50} align="center"/>
+                    <Column title="Dưới chuẩn độ 1" dataIndex="dow_weight" key="dow_weight" width={50} align="center" render={(value)=>value.dow_weight1}/>
+                    <Column title="Dưới chuẩn độ 2" dataIndex="dow_weight" key="dow_weight" width={50} align="center" render={(value)=>value.dow_weight2}/>
+                    <Column title="Dưới chuẩn độ 3" dataIndex="dow_weight" key="dow_weight" width={50} align="center" render={(value)=>value.dow_weight3}/>
                 </ColumnGroup>
                 <ColumnGroup title="CHIỀU CAO (CM)">
-                    <Column title="Trên chuẩn độ 3" dataIndex="up_height3" key="up_height" width={50} align="center"/>
-                    <Column title="Trên chuẩn độ 2" dataIndex="up_height2" key="up_height" width={50} align="center"/>
-                    <Column title="Trên chuẩn độ 1" dataIndex="up_height1" key="up_height" width={50} align="center"/>
+                    <Column title="Trên chuẩn độ 3" dataIndex="up_height" key="up_height" width={50} align="center" render={(value)=>value.up_height3}/>
+                    <Column title="Trên chuẩn độ 2" dataIndex="up_height" key="up_height" width={50} align="center" render={(value)=>value.up_height2}/>
+                    <Column title="Trên chuẩn độ 1" dataIndex="up_height" key="up_height" width={50} align="center" render={(value)=>value.up_height1}/>
                     <Column title="Chuẩn" dataIndex="height" key="height" align="center" />
-                    <Column title="Dưới chuẩn độ 1" dataIndex="dow_height1" key="dow_height" width={50} align="center"/>
-                    <Column title="Dưới chuẩn độ 2" dataIndex="dow_height2" key="dow_height" width={50} align="center"/>
-                    <Column title="Dưới chuẩn độ 3" dataIndex="dow_height3" key="dow_height" width={50} align="center"/>
+                    <Column title="Dưới chuẩn độ 1" dataIndex="dow_height" key="dow_height" width={50} align="center" render={(value)=>value.dow_height1}/>
+                    <Column title="Dưới chuẩn độ 2" dataIndex="dow_height" key="dow_height" width={50} align="center" render={(value)=>value.dow_height2}/>
+                    <Column title="Dưới chuẩn độ 3" dataIndex="dow_height" key="dow_height" width={50} align="center" render={(value)=>value.dow_height3}/>
 
                 </ColumnGroup>
                 {/* <Column

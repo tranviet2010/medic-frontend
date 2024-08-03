@@ -60,6 +60,22 @@ export const mockMenuList: MenuList = [
     },
     icon: 'city',
     path: '/mature',
+  },
+  {
+    code: 'product',
+    label: {
+      en_US: 'Quản lý sản phẩm',
+    },
+    icon: 'city',
+    path: '/product',
+  },
+  {
+    code: 'course',
+    label: {
+      en_US: 'Quản lý liệu trình',
+    },
+    icon: 'city',
+    path: '/course',
   }
 ];
 

@@ -6,6 +6,8 @@ import { configCustome } from '../../api/custom.api';
 import { BaseTable } from '../../components/core/table/tableCore';
 import { ColumnInfo020, ColumnInfoChild, ColumnInfoMature } from './column.customer';
 import { BorderColor } from '../../components/core/variable/variable';
+import { useEffect, useState } from 'react';
+import { getResult } from '../../api/comment.api';
 
 export const AddFormStyle = styled.div`
   background-color: #fff;
@@ -22,8 +24,22 @@ export const DivStyleInfo = styled.div`
 export default function DetailCustomer() {
     const navigate = useNavigate()
     const { state } = useLocation()
+    const [dataC,setDataC] = useState([])
+    const [dataT,setDataT] = useState([])
+    const [dataL,setDataL] = useState([])
     const dataInfoNav: any = state?.data
     
+    useEffect(()=>{
+        getResult({type_result:"C",phone:dataInfoNav?.phone}).then((res)=>{
+            setDataC(res?.data?.data)
+        })
+        getResult({type_result:"T",phone:dataInfoNav?.phone}).then((res)=>{
+            setDataT(res?.data?.data)
+        })
+        getResult({type_result:"L",phone:dataInfoNav?.phone}).then((res)=>{
+            setDataL(res?.data?.data)
+        })
+    },[])
     
     return (
         <AddFormStyle>
@@ -49,7 +65,7 @@ export default function DetailCustomer() {
                         <b>Danh sách đối tượng tư vấn thuộc nhóm thai nhi</b>
                         <BaseTable
                             columType={ColumnInfoChild}
-                            dataSource={[]}
+                            dataSource={dataC}
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />
@@ -60,7 +76,7 @@ export default function DetailCustomer() {
                         <b>Danh sách đối tượng tư vấn thuộc nhóm 0-20 tuổi</b>
                         <BaseTable
                             columType={ColumnInfo020}
-                            dataSource={[]}
+                            dataSource={dataT}
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />
@@ -71,7 +87,7 @@ export default function DetailCustomer() {
                         <b>Danh sách đối tượng tư vấn thuộc nhóm trưởng hành</b>
                         <BaseTable
                             columType={ColumnInfoMature}
-                            dataSource={[]}
+                            dataSource={dataL}
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />

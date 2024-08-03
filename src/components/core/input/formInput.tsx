@@ -74,7 +74,7 @@ const BaseFormInput = ({
 }: fromInput) => {
     const dataParam = useSelector((state: any) => state.usersSlice.param);
 
-    const dataPramType = data ? data : dataParam[typeParam];
+    const dataPramType = data&&data ? data : dataParam[typeParam];
     const dateFormatList = 'DD/MM/YYYY';
 
 

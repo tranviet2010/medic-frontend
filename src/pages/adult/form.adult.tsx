@@ -20,6 +20,7 @@ export const FormAdult: React.FC<any> = ({ initialValues, type }) => {
             notNote
             adult
         >
+            <p style={{color:'red'}}>* Lưu ý nếu nhập vào là số thập phân thì ngăn cách bằng dấu (.). Ví dụ 14.5 không nhập 14,5</p>
             <Row gutter={16}>
                     <Col span={8}>
                         <BaseFormInput type="option" label="Chọn tuổi" name="age"  required data={Age()}/>

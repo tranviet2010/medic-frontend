@@ -174,11 +174,11 @@ export const BaseTable = ({
             <Table
                 columns={columnTable}
                 bordered
-                pagination={pagination}
+                // pagination={pagination}
                 dataSource={dataSource}
                 scroll={{ y: 1000 }}
                 loading={loading}
-                onChange={handleTableChange}
+                // onChange={handleTableChange}
                 locale={{ emptyText: 'Không có dữ liệu hiển thị' }}
                 size='middle'
                 // style={{ height: "500px" }}
