@@ -29,6 +29,35 @@ export const convertAge = (code: any) => {
     return age.filter((value) => value.autoid == Number(code))[0]?.value
 }
 
+export const NumberAgeString = (days: any) => {
+    const daysInYear = 365;
+    const daysInMonth = 30;
+
+    const years = Math.floor(days / daysInYear);
+    const remainingDays = days % daysInYear;
+    const months = Math.floor(remainingDays / daysInMonth);
+
+    return `${years} Tuổi ${months} tháng`;
+}
+
+
+
+
+export const calculateSums = (data: any) => {
+    const statusArray = ["Trên chuẩn độ 3", "Trên chuẩn 2", "Trên chuẩn 1", "Chuẩn", "Dưới chuẩn 1", "Dưới chuẩn 2", "Dưới chuẩn 3"];
+    let result: any = [];
+
+    data.forEach((item: any, index: any) => {
+        statusArray.forEach((status, statusIndex) => {
+            result.push({
+                _id: `${NumberAgeString(item.number_day)} ${status}`,
+                value: `${NumberAgeString(item.number_day)} ${status}`
+            });
+        });
+    });
+    return result
+}
+
 export const convertAgeMonth = (code: any) => {
     let ageMonth = AgeMonth()
     return ageMonth.filter((value) => value.autoid == Number(code))[0]?.value

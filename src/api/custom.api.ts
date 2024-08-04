@@ -8,6 +8,9 @@ export const getPartner = (config?: any) => axiosInstance.get('partner', { param
 
 export const getProductN = (config?: any) => axiosInstance.get('product', { params: config });
 
+export const getCourse = (config?: any) => axiosInstance.get('course', { params: config });
+
+
 export const getCity = (config?: any) => axiosInstance.get('city', { params: config });
 
 export const getAgent = (config?: any) => axiosInstance.get('agent', { params: config });

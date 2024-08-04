@@ -5,7 +5,7 @@ import { paginationShared } from "../../components/core/variable/variable"
 import { useSelector } from "react-redux"
 import { Col } from "antd"
 import BaseFormInput from "../../components/core/input/formInput"
-import { getPartner, getProductN } from "../../api/custom.api"
+import { getCourse, getPartner, getProductN } from "../../api/custom.api"
 import { ColumnCourse } from "./column.course"
 
 
@@ -21,7 +21,7 @@ export default function Course() {
             ...pagination,
             ...params
         }
-        getProductN(combinedParams).then((ress: any) => {
+        getCourse(combinedParams).then((ress: any) => {
             setData(ress?.data?.data)
         })
     }, [])

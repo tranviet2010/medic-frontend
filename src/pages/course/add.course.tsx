@@ -16,7 +16,7 @@ export default function AddCourse() {
     return (
         <AddFormStyle>
             <Card
-                title=" + Thêm mới sản phẩm"
+                title=" + Thêm mới liệu trình"
                 extra={
                     < p onClick={() => navigate(configCourse.navigate)} style={{ cursor: 'pointer', fontSize: '16px', fontWeight: 600 }}>X</p>
                 }
