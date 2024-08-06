@@ -58,3 +58,9 @@ export const formatCurrency = (amount: any) => {
 }
 
 export const addKeyOnTable = (data: any) => data.map((obj: any) => ({ ...obj, key: obj._id || obj.id }))
+
+
+export const convertUrlImage = (filePath:string) => {
+    return filePath.split('/').pop();
+
+}
