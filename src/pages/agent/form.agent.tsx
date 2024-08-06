@@ -19,8 +19,6 @@ export const FormAgent: React.FC<any> = ({ initialValues, type }) => {
         const dataConvert = data?.data?.data?.map((val: any) => ({ ...val,value:val.name, autoid: val?._id }))
         setDataParent(dataConvert)
     }
-
-
     useEffect(() => {
         getDataPartner()
 
@@ -47,6 +45,9 @@ export const FormAgent: React.FC<any> = ({ initialValues, type }) => {
                 </Col>
                 <Col span={8} >
                     <BaseFormInput type="input" placeholder="Nhập email" label="Email" name="email" />
+                </Col>
+                <Col span={8} >
+                    <BaseFormInput type="input" placeholder="Nhập mật khẩu" label="Mật khẩu" name="password" required/>
                 </Col>
                 <Col span={8} >
                     <BaseFormInput type="option" placeholder="Đối tác" label="Chọn đối tác" name="partner" data={dataPartner} />

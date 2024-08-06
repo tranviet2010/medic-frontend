@@ -7,6 +7,8 @@ import { Col } from "antd"
 import BaseFormInput from "../../components/core/input/formInput"
 import { ColumnCustomer } from "./column.partner"
 import { getPartner } from "../../api/custom.api"
+import { addKeyOnTable } from "../../utils/convertData"
+import { configPartner } from "../../api/comment.api"
 
 
 export default function Customer() {
@@ -22,7 +24,7 @@ export default function Customer() {
             ...params
         }
         getPartner(combinedParams).then((ress: any) => {
-            setData(ress?.data?.data)
+            setData(addKeyOnTable(ress?.data?.data))
         })
     }, [])
 
@@ -63,6 +65,8 @@ export default function Customer() {
                 dataSource={data}
                 user
                 pagination={pagination}
+                configUrl={configPartner}
+                del
                 // onChangePaniga={onChangePaniga}
             />
         </>

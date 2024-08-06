@@ -41,7 +41,9 @@ const LoginForm = () => {
 
   const onFinish = async (value: { email: string, password: string }) => {
     let infoLogin = await LoginApi(value)
-    console.log("infoLogin",infoLogin);
+    localStorage.setItem('role',infoLogin?.data?.data?.role[0])
+    localStorage.setItem('id',infoLogin?.data?.data?.id)
+    localStorage.setItem('email',infoLogin?.data?.data?.email)
     if (infoLogin?.data?.code == '200') {
       navigate("/")
       dispatch(fetchUserById())

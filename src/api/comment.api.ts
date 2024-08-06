@@ -45,6 +45,7 @@ export const configPartner = {
     urlEdit: "partner",
     urlAdd: "partner",
     urlGetInfo: "partner",
+    urlDelete:"partner"
 }
 
 export const configProduct = {

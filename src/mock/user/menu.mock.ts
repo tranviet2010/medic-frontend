@@ -1,7 +1,12 @@
-import type { MenuList } from '../../interface/layout/menu.interface';
-
-
-export const mockMenuList: MenuList = [
+export const mockMenuListAdmin = [
+  {
+    code: 'dashboard',
+    label: {
+      en_US: 'Quản trị',
+    },
+    icon: 'permission',
+    path: '/',
+  },
   {
     code: 'partner',
     label: {
@@ -10,7 +15,6 @@ export const mockMenuList: MenuList = [
     icon: 'permission',
     path: '/partner',
   },
-
   {
     code: 'agent',
     label: {
@@ -18,8 +22,8 @@ export const mockMenuList: MenuList = [
     },
     icon: 'city',
     path: '/agent',
-  },
 
+  },
   {
     code: 'customer',
     label: {
@@ -36,15 +40,6 @@ export const mockMenuList: MenuList = [
     icon: 'comment',
     path: '/nose-femur',
   },
-  // {
-  //   code: 'ManageMenu',
-  //   label: {
-  //     en_US: 'Quản lý tin nhắn',
-  //   },
-  //   icon: 'permission',
-  //   path: '/manageMenu3.2',
-  // },
-  
   {
     code: 'adult',
     label: {
@@ -52,14 +47,6 @@ export const mockMenuList: MenuList = [
     },
     icon: 'city',
     path: '/adult',
-  },
-  {
-    code: 'mature',
-    label: {
-      en_US: 'Quản lý chỉ số người trưởng thành',
-    },
-    icon: 'city',
-    path: '/mature',
   },
   {
     code: 'product',
@@ -77,8 +64,62 @@ export const mockMenuList: MenuList = [
     icon: 'city',
     path: '/course',
   }
-];
+]
+
+export const mockMenuListPartner = [
+  {
+    code: 'dashboard',
+    label: {
+      en_US: 'Quản trị',
+    },
+    icon: 'permission',
+    path: '/',
+  },
+  // {
+  //   code: 'partner',
+  //   label: {
+  //     en_US: 'Quản lý đối tác',
+  //   },
+  //   icon: 'permission',
+  //   path: '/partner',
+  // },
+  {
+    code: 'agent',
+    label: {
+      en_US: 'Quản lý đại lý',
+    },
+    icon: 'city',
+    path: '/agent',
+
+  }
+]
+
+export const mockMenuListAgent = [
+  {
+    code: 'dashboard',
+    label: {
+      en_US: 'Quản trị',
+    },
+    icon: 'permission',
+    path: '/',
+  },
+  // {
+  //   code: 'agent',
+  //   label: {
+  //     en_US: 'Quản lý đại lý',
+  //   },
+  //   icon: 'city',
+  //   path: '/agent',
+
+  // },
+  {
+    code: 'customer',
+    label: {
+      en_US: 'Quản lý khách hàng',
+    },
+    icon: 'user',
+    path: '/customer',
+  }
+]
 
 
-
-// mock.mock('/user/menu', 'get', intercepter(mockMenuList));

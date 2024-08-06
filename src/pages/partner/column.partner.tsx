@@ -7,5 +7,6 @@ export const ColumnCustomer = [
     { title: 'Tên công ty', dataIndex: 'company_name', key: 'type',align: 'center' },
     { title: 'Địa chỉ', dataIndex: 'address', key: 'type',align: 'center'},
     { title: 'Email', dataIndex: 'email', key: 'type',align: 'center' },
+    { title: 'Mật khẩu', dataIndex: 'password', key: 'type',align: 'center' },
     { title: 'Ghi chú', dataIndex: 'note', key: 'type',align: 'center' },
 ]

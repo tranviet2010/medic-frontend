@@ -1,6 +1,6 @@
 import { Col, Form, Modal, Row, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { EditOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { EditOutlined, InfoCircleOutlined,DeleteOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 // import { deleteServiceInfo } from '@/api/layout.api';
@@ -39,7 +39,7 @@ interface BaseTable {
     deltail?: any
     notAction?: boolean
     user?: boolean
-    classT?: boolean
+    del?: boolean
     cus?: any
 }
 // todo handler edit and navigate
@@ -55,7 +55,7 @@ export const BaseTable = ({
     deltail,
     notAction,
     user,
-    classT,
+    del,
     cus
 }: BaseTable) => {
     const { loading } = useSelector((state: {
@@ -99,7 +99,19 @@ export const BaseTable = ({
                     >
                         <EditOutlined />
                     </span>
-
+                    {
+                        del ? (
+                            <span
+                                onClick={() =>
+                                    deleteManyId(item?._id)
+                                }
+                                style={{ cursor: 'pointer', marginLeft: '1.5rem' }}
+                                title="Xoá"
+                            >
+                                <DeleteOutlined />
+                            </span>
+                        ) : null
+                    }
                     {cus ? (
                         <span
                             onClick={() =>
@@ -110,7 +122,7 @@ export const BaseTable = ({
                                     },
                                 })
                             }
-                            style={{ cursor: 'pointer',marginLeft:'1.5rem' }}
+                            style={{ cursor: 'pointer', marginLeft: '1.5rem' }}
                             title="Thông tin"
                         >
                             <InfoCircleOutlined />
@@ -121,6 +133,7 @@ export const BaseTable = ({
             ),
         },
     ]
+    
 
     const deleteManyId = (id: any) => {
         store.dispatch(setModalTrue());
@@ -129,7 +142,7 @@ export const BaseTable = ({
             content: `Bạn có muốn xóa bản ghi này`,
             async onOk() {
                 try {
-                    let url = configUrl.urlDelete + id;
+                    let url = configUrl.urlDelete + '/' + id;
                     deleteFormRequest(url, {}).then((res: any) => {
                         if (res?.status == 200) {
                             Notifi('succ', `Xóa thành công bản ghi`);
@@ -156,6 +169,8 @@ export const BaseTable = ({
             total: pagination?.total
         })
     }
+
+    
     useEffect(() => {
         form.setFieldsValue({ custType: typeC?.custType })
     }, [typeC])
@@ -181,7 +196,7 @@ export const BaseTable = ({
                 // onChange={handleTableChange}
                 locale={{ emptyText: 'Không có dữ liệu hiển thị' }}
                 size='middle'
-                // style={{ height: "500px" }}
+            // style={{ height: "500px" }}
             />
             {/* {dataSource.length != 0 ? `Hiện thị ${pagination?.pageSize} bản ghi trên tổng số ${pagination?.total} ` : ""} */}
         </>

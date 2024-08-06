@@ -14,10 +14,16 @@ export default function Customer() {
     const [pagination, setPagination] = useState(paginationShared)
     const dataModal = useSelector((state: any) => state.global.dataModal)
     const agentStore = useSelector((state: any) => state.usersSlice.param.agent)
+    const getIdByEmailAgent = useSelector((state: any) => state?.usersSlice?.param?.getIdByEmailAgent)
     const [valueSearch, setValueSearch] = useState<any>()
 
     const fetchData = useCallback((pagination: any, params: any) => {
-        const combinedParams = {
+        const role = localStorage.getItem('role')
+        const combinedParams = role == '2' ? {
+            ...pagination,
+            ...params,
+            agent:getIdByEmailAgent&&getIdByEmailAgent[0]?._id
+        } : {
             ...pagination,
             ...params
         }

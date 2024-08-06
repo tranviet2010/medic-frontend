@@ -3,13 +3,17 @@ import { getAgent, getPartner } from '../api/custom.api';
 
 // First, create the thunk
 export const fetchUserById = createAsyncThunk('users/fetchUserById', async () => {
+    const emailLocal = localStorage.getItem("email")
    
     const getAgents = await getAgent()
     const getPartners = await getPartner()
-
+    const getIdByEmail = await getPartner({email:emailLocal})
+    const getIdByEmailAgent = await getAgent({email:emailLocal})
     return {
         agent:getAgents?.data?.data,
-        parent: getPartners?.data?.data
+        parent: getPartners?.data?.data,
+        getIdEmail: getIdByEmail?.data?.data,
+        getIdByEmailAgent:getIdByEmailAgent?.data?.data
     }
 })
 

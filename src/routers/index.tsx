@@ -12,6 +12,9 @@ const RouterBanner = lazy(() => import(/* webpackChunkName: "route-permission"*/
 const RouterBannerEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/bannner/edit.banner'));
 const RouterBannerAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/bannner/add.banner'));
 
+const RouterDashboard = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/dashboard'));
+
+
 const RouterCustomer = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer'));
 const RouterCustomerEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/edit.customer'));
 const RouterCustomerAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/add.customer'));
@@ -58,6 +61,10 @@ const routeList: RouteObject[] = [
         path: '/',
         element: <LayoutPage />,
         children: [
+            {
+                path: '/',
+                element: <RouterDashboard />,
+            },
             {
                 path: 'customer',
                 element: <RouterCustomer />,

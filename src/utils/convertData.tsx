@@ -56,3 +56,5 @@ export const formatCurrency = (amount: any) => {
 
     return `${integerPart}${decimalPart}`
 }
+
+export const addKeyOnTable = (data: any) => data.map((obj: any) => ({ ...obj, key: obj._id || obj.id }))

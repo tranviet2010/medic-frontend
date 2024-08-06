@@ -7,10 +7,6 @@ import { ButtonCore } from '../button/buttonCore';
 import { addError, addSucc, updateError, updateSucc } from '../../../utils/textUnits';
 import { addFormData, editFormRequest } from '../../../api/request';
 import TextArea from 'antd/es/input/TextArea';
-import { getTimeUnix } from '../../../utils/convertData';
-import { fetchUserById } from '../../../stores/param';
-import { AppDispatch } from '../../../stores';
-import { useDispatch } from 'react-redux';
 import UploadFile from '../../../api/uploadfile';
 
 export const FormSubmit = ({ type, initialValues, children, onchange, configUrl, notNote, file, ...props }: any) => {

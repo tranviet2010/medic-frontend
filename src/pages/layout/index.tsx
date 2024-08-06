@@ -6,43 +6,52 @@ import { Suspense, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet, useLocation } from 'react-router';
 import MenuComponent from './menu';
-import { mockMenuList } from '../../mock/user/menu.mock';
 import HeaderComponent from './header';
 import { LocalStorage } from '../../utils/convertData';
 import { useNavigate } from 'react-router-dom';
 import store, { AppDispatch } from '../../stores';
 import { fetchUserById } from '../../stores/param';
+import { mockMenuListAdmin, mockMenuListAgent, mockMenuListPartner } from '../../mock/user/menu.mock';
 const { Sider, Content } = Layout;
 
 const LayoutPage: FC = () => {
   const location = useLocation();
   const [openKey, setOpenkey] = useState<string>();
+  const [role, setRole] = useState(Number(localStorage.getItem('role')));
   const [selectedKey, setSelectedKey] = useState<string>(location.pathname);
-  const [menuList, setMenuList] = useState<MenuList>([]);
   const token = antTheme.useToken();
   const navigate = useNavigate()
   const dispatch = useDispatch<AppDispatch>()
+
+
   useEffect(() => {
+    const storedRole = Number(localStorage.getItem('role'));
+    if (role !== storedRole) {
+      setRole(storedRole);
+    }
     setSelectedKey(location.pathname);
-  }, [location.pathname]);
+  }, [location.pathname, role]);
 
   const onChanged = (e: any) => {
     // store.dispatch()
     // dispatch(fetchUserById())
     setSelectedKey(e)
   }
-  const fetchMenuList = useCallback(async () => {
-    setMenuList(mockMenuList);
-  }, [dispatch]);
+
 
 
   useEffect(() => {
     let token = LocalStorage('token')
-    fetchMenuList();
     if (token == null) {
       navigate('/login')
     }
-  }, [fetchMenuList]);
+  }, [role]);
+
+  const menuList =
+    role === 0 ? mockMenuListAdmin : role === 1 ? mockMenuListPartner : mockMenuListAgent;
+
+
+
   const toggle = () => {
 
   }

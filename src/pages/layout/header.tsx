@@ -30,6 +30,7 @@ const HeaderComponent: FC<HeaderProps> = ({ collapsed, toggle }) => {
             case 'logout':
                 // const res = Boolean(await dispatch(logoutAsync()));
                 localStorage.removeItem("token");
+                localStorage.removeItem("role");
                 navigate('/login');
 
                 return;
