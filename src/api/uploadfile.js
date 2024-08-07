@@ -58,7 +58,6 @@ const UploadFile = ({handleFile}) => {
         imgWindow?.document.write(image.outerHTML);
     };
     return (
-        <ImgCrop rotationSlider>
             <Upload
                 customRequest={customRequest}
                 listType="picture-card"
@@ -66,9 +65,8 @@ const UploadFile = ({handleFile}) => {
                 onChange={onChange}
                 onPreview={onPreview}
             >
-                {fileList.length < 1 && '+ Thêm ảnh'}
+                {fileList.length < 1 && '+ Thêm file'}
             </Upload>
-        </ImgCrop>
     );
 };
 export default UploadFile;

@@ -12,36 +12,36 @@ import UploadFile from '../../../api/uploadfile';
 export const FormSubmit = ({ type, initialValues, children, onchange, configUrl, notNote, file, ...props }: any) => {
     const [form] = Form.useForm()
     const navigate = useNavigate()
-    const [url,setUrl]= useState()
+    const [url, setUrl] = useState()
     const onFinish = (values: any) => {
         let configValue = props.adult ? {
             ...initialValues,
             ...values,
-            up_height:{
-                up_height1:values.up_height1,
-                up_height2:values.up_height3,
-                up_height3:values.up_height3
+            up_height: {
+                up_height1: values.up_height1,
+                up_height2: values.up_height3,
+                up_height3: values.up_height3
             },
-            dow_height:{
-                dow_height3:values.dow_height3,
-                dow_height2:values.dow_height2,
-                dow_height1:values.dow_height1,
+            dow_height: {
+                dow_height3: values.dow_height3,
+                dow_height2: values.dow_height2,
+                dow_height1: values.dow_height1,
             },
-            up_weight:{
-                up_weight1:values.up_weight1,
-                up_weight2:values.up_weight3,
-                up_weight3:values.up_weight3
+            up_weight: {
+                up_weight1: values.up_weight1,
+                up_weight2: values.up_weight3,
+                up_weight3: values.up_weight3
             },
-            dow_weight:{
-                dow_weight3:values.dow_weight3,
-                dow_weight2:values.dow_weight2,
-                dow_weight1:values.dow_weight1,
+            dow_weight: {
+                dow_weight3: values.dow_weight3,
+                dow_weight2: values.dow_weight2,
+                dow_weight1: values.dow_weight1,
             },
             number_day: Number(values.age) + Number(values.month_age),
         } : {
             ...initialValues,
             ...values,
-            image:url
+            image: url
         }
 
         if (type == "add") {
@@ -51,7 +51,7 @@ export const FormSubmit = ({ type, initialValues, children, onchange, configUrl,
                     form.resetFields();
                     navigate(configUrl?.navigate)
                 } else {
-                    Notifi("error", addError)
+                    // Notifi("error", addError)
                 }
             })
         }

@@ -6,6 +6,8 @@ export const getNation = (config?: any) => axiosInstance.get('nation', { params:
 
 export const getPartner = (config?: any) => axiosInstance.get('partner', { params: config });
 
+export const getDoc = (config?: any) => axiosInstance.get('doc', { params: config });
+
 export const getProductN = (config?: any) => axiosInstance.get('product', { params: config });
 
 export const getCourse = (config?: any) => axiosInstance.get('course', { params: config });

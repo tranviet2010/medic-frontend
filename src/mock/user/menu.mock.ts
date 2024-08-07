@@ -63,6 +63,14 @@ export const mockMenuListAdmin = [
     },
     icon: 'lt',
     path: '/course',
+  },
+  {
+    code: 'doc',
+    label: {
+      en_US: 'Quản lý tài nguyên',
+    },
+    icon: 'doc',
+    path: '/doc',
   }
 ]
 

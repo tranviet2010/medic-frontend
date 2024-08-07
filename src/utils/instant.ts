@@ -17,7 +17,7 @@ export const Age = () => {
 }
 
 export const AgeMonth = () => {
-    let fun = []
+    let fun = [{autoid:1,value: "0 tháng"}]
     for (let i = 1; i < 12; i++) {
         fun.push({ autoid: 30 * i, value: i + " tháng" })
     }
@@ -60,6 +60,9 @@ export const calculateSums = (data: any) => {
 
 export const convertAgeMonth = (code: any) => {
     let ageMonth = AgeMonth()
+    if(Number(code) < 30){
+        return ""
+    }
     return ageMonth.filter((value) => value.autoid == Number(code))[0]?.value
 }
 

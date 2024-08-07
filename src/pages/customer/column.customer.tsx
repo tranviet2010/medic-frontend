@@ -44,5 +44,11 @@ export const ColumnInfoMature = [
     { title: 'Họ tên', dataIndex: 'sponsor', key: 'sponsor', align: 'center' },
     { title: 'Ngày tháng năm sinh', dataIndex: 'dob', key: 'type', align: 'center' },
     { title: 'Bệnh lý hiện tại', dataIndex: 'phatho', key: 'type', align: 'center' },
-    { title: 'File đính kèm', dataIndex: 'file', key: 'type', align: 'center', render: ((val: any) => (<Image width={100} src={`http://172.104.189.80/uploads/${val?.split('/').pop()}`} />)) }
+    {
+        title: 'File đính kèm', dataIndex: 'file', key: 'type', align: 'center', render: ((val: any) =>
+            <a href="" onClick={() => window.open(`http://172.104.189.80/uploads/${val?.split('/').pop()}`)}>
+                {val?.split('/').pop()}
+            </a>
+        )
+    }
 ]

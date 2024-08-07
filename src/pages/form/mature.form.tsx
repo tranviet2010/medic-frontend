@@ -25,6 +25,8 @@ function MatureForm() {
     const { state } = useLocation()
     const idByEmailPartner = useSelector((state: any) => state.usersSlice.param.getIdEmail[0]?.phone)
     const getIdByEmailAgent = useSelector((state: any) => state?.usersSlice?.param?.getIdByEmailAgent[0]?.phone)
+    const urlBack = state?.type == 'customer' ? "/customer" : "/"
+
     const onFinish = (value: any) => {
         const dataResult = {
             type_result: "L",
@@ -42,14 +44,12 @@ function MatureForm() {
 
         postInfo('result', dataResult).then((res) => {
             Notifi("succ", addSave)
-            navigate("/")
+            navigate(urlBack)
         })
     };
     const handeleFile = (url: any) => {
         setUrl(url)
     }
-
-    const urlBack = state?.type == 'customer' ? "/customer" : "/"
 
     return (
         <Row>

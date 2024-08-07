@@ -12,6 +12,7 @@ import BaseFieldset from "../../components/core/fieldset";
 
 export const FormAdult: React.FC<any> = ({ initialValues, type }) => {
     const [initialValue, setInitialValue] = useState<any>(initialValues)
+    console.log("AgeMonth()",AgeMonth());
     return (
         <FormSubmit
             initialValues={initialValue}
@@ -20,19 +21,28 @@ export const FormAdult: React.FC<any> = ({ initialValues, type }) => {
             notNote
             adult
         >
-            <p style={{color:'red'}}>* Lưu ý nếu nhập vào là số thập phân thì ngăn cách bằng dấu (.). Ví dụ 14.5 không nhập 14,5</p>
+            <p style={{ color: 'red' }}>* Lưu ý nếu nhập vào là số thập phân thì ngăn cách bằng dấu (.). Ví dụ 14.5 không nhập 14,5</p>
             <Row gutter={16}>
-                    <Col span={8}>
-                        <BaseFormInput type="option" label="Chọn tuổi" name="age"  required data={Age()}/>
-                    </Col>
-                    <Col span={8} >
-                        <BaseFormInput type="option" label="Chọn tháng" name="month_age" required data={AgeMonth()}/>
-                    </Col>
+                <Col span={8}>
+                    <BaseFormInput type="option" label="Chọn tuổi" name="age" required data={Age()} />
+                </Col>
+                <Col span={8} >
+                    <BaseFormInput type="option" label="Chọn tháng" name="month_age" required data={AgeMonth()} onChange={(vale:any)=>console.log("Value",vale)}/>
+                </Col>
+                <Col span={8} >
+                    <BaseFormInput type="option" label="Giới tính" name="male" required
+                        data={[
+                            { autoid: "0", value: "Bé trai" },
+                            { autoid: "1", value: "Bé gái" },
+
+                        ]}
+                    />
+                </Col>
             </Row>
             <BaseFieldset title="Cân Nặng (KG)">
                 <Row gutter={16}>
                     <Col span={8}>
-                        <BaseFormInput type="input" label="Trên chuẩn độ 3" name="up_weight3"  required />
+                        <BaseFormInput type="input" label="Trên chuẩn độ 3" name="up_weight3" required />
                     </Col>
                     <Col span={8} >
                         <BaseFormInput type="input" label="Trên chuẩn độ 2" name="up_weight2" required />

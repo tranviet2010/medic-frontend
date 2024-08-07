@@ -8,8 +8,8 @@ import Notifi from '../components/core/noti';
 
 const axiosInstance = axios.create({
     // baseURL: process.env.REACT_APP_API_BASE,
-    // baseURL: "http://localhost:198/api/v1/",
-    baseURL: "http://172.104.189.80:198/api/v1/",
+    baseURL: "http://localhost:198/api/v1/",
+    // baseURL: "http://172.104.189.80:198/api/v1/",
     timeout: 1000,
 })
 
@@ -42,6 +42,11 @@ axiosInstance.interceptors.response.use(
                 loading: false,
             })
         )
+
+        if (error?.response?.data?.code == 'USER_00001') {
+            Notifi('error', "Số điện thoại đã được dùng đăng ký tài khoản");
+            return
+        }
         let errorMessage = 'Lỗi hệ thống'
         if (error?.code == "ERR_BAD_REQUEST") {
             errorMessage = error?.response?.data?.message

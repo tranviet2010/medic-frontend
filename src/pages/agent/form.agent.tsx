@@ -3,10 +3,6 @@ import { Col, Form, Row } from "antd"
 import { useEffect, useState } from "react"
 import { FormSubmit } from "../../components/core/form/formSubmit";
 import BaseFormInput from "../../components/core/input/formInput";
-import UpLoadFile from "../../components/core/input/uploadFile";
-import { getPartnerClass } from "../../api/partner.api";
-import { useSelector } from "react-redux";
-import { Display, Phan_he } from "../../utils/instant";
 import { configAgent } from "../../api/comment.api";
 import { getPartner } from "../../api/custom.api";
 
@@ -44,7 +40,7 @@ export const FormAgent: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập địa chỉ" label="Địa chỉ" name="address" />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập email" label="Email" name="email" />
+                    <BaseFormInput type="input" placeholder="Nhập email" label="Email" name="email" required/>
                 </Col>
                 <Col span={8} >
                     <BaseFormInput type="input" placeholder="Nhập mật khẩu" label="Mật khẩu" name="password" required/>

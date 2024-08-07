@@ -21,7 +21,7 @@ export const FormPartner: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập tên đối tác" name="name" label="Tên đối tác" required />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập số điện thoại" name="phone" label="Số điện thoại" />
+                    <BaseFormInput type="input" placeholder="Nhập số điện thoại" name="phone" label="Số điện thoại" required/>
                 </Col>
                 <Col span={8} >
                     <BaseFormInput type="input" placeholder="Nhập tên công ty đối tác" name="company_name" label="Tên công ty đối tác" required />

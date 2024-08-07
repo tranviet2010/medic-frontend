@@ -10,7 +10,8 @@ import {
     ExperimentOutlined,
     AlertOutlined,
     ProjectOutlined,
-    BarChartOutlined
+    BarChartOutlined,
+    MenuOutlined
 }
     from '@ant-design/icons'
 
@@ -44,6 +45,9 @@ export const CustomIcon: FC<CustomIconProps> = (props) => {
     }
     else if (type === 'lt') {
         com = <BarChartOutlined />
+    }
+    else if (type === 'doc') {
+        com = <MenuOutlined />
     }
 
     

@@ -25,6 +25,7 @@ function ChildForm() {
     const { state } = useLocation()
     const idByEmailPartner = useSelector((state: any) => state.usersSlice?.param?.getIdEmail[0]?.phone)
     const getIdByEmailAgent = useSelector((state: any) => state?.usersSlice?.param?.getIdByEmailAgent[0]?.phone)
+    const urlBack = state?.type == 'customer' ? "/customer" : "/"
 
     const onFinish = (value: any) => {
         let url = `nose-femur/finByQuery?age=${value?.age}&averageNose=${value.averageNose}&averageFemur=${value.averageFemur}`
@@ -50,12 +51,12 @@ function ChildForm() {
 
             postInfo('result', dataResult).then((res) => {
                 Notifi("succ", addSave)
-                navigate("/")
+                navigate(urlBack)
             })
         })
     };
     
-    const urlBack = state?.type == 'customer' ? "/customer" : "/"
+    
 
 
 

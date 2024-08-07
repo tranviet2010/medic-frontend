@@ -48,6 +48,15 @@ export const configPartner = {
     urlDelete:"partner"
 }
 
+export const configDoc = {
+    navigate: "/doc",
+    // urlInfo: "doc",
+    urlEdit: "doc",
+    urlAdd: "doc",
+    urlGetInfo: "doc",
+    urlDelete:"doc"
+}
+
 export const configProduct = {
     navigate: "/product",
     // urlInfo: "partner",

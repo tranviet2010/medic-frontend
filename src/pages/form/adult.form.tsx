@@ -22,8 +22,9 @@ function AdultForm() {
     const [form] = Form.useForm()
     const role = localStorage.getItem('role')
     const { state } = useLocation()
-    const idByEmailPartner = useSelector((state: any) => state.usersSlice.param.getIdEmail[0]?.phone)
+    const idByEmailPartner = useSelector((state: any) => state.usersSlice?.param.getIdEmail[0]?.phone)
     const getIdByEmailAgent = useSelector((state: any) => state?.usersSlice?.param?.getIdByEmailAgent[0]?.phone)
+    const urlBack = state?.type == 'customer' ? "/customer" : "/"
 
     const onFinish = (value: any) => {
         let url = `height/finByQuery?number_day=${DateToDay(value?.date)}&height=${value.height}&weight=${value.weight}`
@@ -51,12 +52,10 @@ function AdultForm() {
             }
             postInfo('result', data).then((res) => {
                 Notifi("succ", addSave)
-                navigate("/")
+                navigate(urlBack)
             })
         })
     };
-
-    const urlBack = state?.type == 'customer' ? "/customer" : "/"
     return (
         <Row
         // type="flex
@@ -89,7 +88,7 @@ function AdultForm() {
                                             name="phone"
                                             rules={[{ required: false, message: 'Vui lòng nhập số điện thoại' }]}
                                         >
-                                            <Input defaultValue={state?.data[0].phone} disabled={true} />
+                                            <Input defaultValue={state?.data[0]?.phone} disabled={true} />
                                         </Form.Item>
                                         :
                                         <Form.Item
