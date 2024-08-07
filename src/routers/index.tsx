@@ -47,6 +47,10 @@ const RouterCourse = lazy(() => import(/* webpackChunkName: "route-permission"*/
 const RouterCourseAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/course/add.course'));
 const RouterCourseEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/course/edit.course'));
 
+const RouterAdultForm = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/form/adult.form'));
+const RouterChildForm = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/form/child.form'));
+const RouterMatureForm = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/form/mature.form'));
+
 
 
 
@@ -156,6 +160,18 @@ const routeList: RouteObject[] = [
             {
                 path: 'mature',
                 element: <RouterMature />,
+            },
+            {
+                path: 'form/adult',
+                element: <RouterAdultForm />,
+            },
+            {
+                path: 'form/child',
+                element: <RouterChildForm />,
+            },
+            {
+                path: 'form/mature',
+                element: <RouterMatureForm />,
             }
         ]
     },

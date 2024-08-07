@@ -12,7 +12,7 @@ export const mockMenuListAdmin = [
     label: {
       en_US: 'Quản lý đối tác',
     },
-    icon: 'permission',
+    icon: 'banner',
     path: '/partner',
   },
   {
@@ -20,7 +20,7 @@ export const mockMenuListAdmin = [
     label: {
       en_US: 'Quản lý đại lý',
     },
-    icon: 'city',
+    icon: 'menu',
     path: '/agent',
 
   },
@@ -45,7 +45,7 @@ export const mockMenuListAdmin = [
     label: {
       en_US: 'Quản lý chỉ số người lớn',
     },
-    icon: 'city',
+    icon: 'prod',
     path: '/adult',
   },
   {
@@ -53,7 +53,7 @@ export const mockMenuListAdmin = [
     label: {
       en_US: 'Quản lý sản phẩm',
     },
-    icon: 'city',
+    icon: 'productot',
     path: '/product',
   },
   {
@@ -61,7 +61,7 @@ export const mockMenuListAdmin = [
     label: {
       en_US: 'Quản lý liệu trình',
     },
-    icon: 'city',
+    icon: 'lt',
     path: '/course',
   }
 ]
@@ -88,7 +88,7 @@ export const mockMenuListPartner = [
     label: {
       en_US: 'Quản lý đại lý',
     },
-    icon: 'city',
+    icon: 'menu',
     path: '/agent',
 
   }

@@ -66,7 +66,7 @@ const UploadFile = ({handleFile}) => {
                 onChange={onChange}
                 onPreview={onPreview}
             >
-                {fileList.length < 1 && '+ Ảnh sản phẩm'}
+                {fileList.length < 1 && '+ Thêm ảnh'}
             </Upload>
         </ImgCrop>
     );

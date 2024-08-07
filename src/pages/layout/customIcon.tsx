@@ -5,9 +5,12 @@ import {
     BookOutlined,
     SnippetsOutlined,
     UsergroupAddOutlined,
-    CommentOutlined,
+    LineChartOutlined,
     FileImageOutlined,
-    ExperimentOutlined
+    ExperimentOutlined,
+    AlertOutlined,
+    ProjectOutlined,
+    BarChartOutlined
 }
     from '@ant-design/icons'
 
@@ -26,13 +29,26 @@ export const CustomIcon: FC<CustomIconProps> = (props) => {
     } else if (type === 'user') {
         com = <UsergroupAddOutlined />
     } else if (type === 'comment') {
-        com = <CommentOutlined />
+        com = <LineChartOutlined />
     } else if (type === 'banner') {
         com = <FileImageOutlined />
     }
     else if (type === 'product') {
         com = <ExperimentOutlined />
     }
+    else if (type === 'prod') {
+        com = <AlertOutlined />
+    }
+    else if (type === 'productot') {
+        com = <ProjectOutlined />
+    }
+    else if (type === 'lt') {
+        com = <BarChartOutlined />
+    }
+
+    
+
+ 
     else {
         com = <PieChartOutlined />
     }

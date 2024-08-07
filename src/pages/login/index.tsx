@@ -44,6 +44,7 @@ const LoginForm = () => {
     localStorage.setItem('role',infoLogin?.data?.data?.role[0])
     localStorage.setItem('id',infoLogin?.data?.data?.id)
     localStorage.setItem('email',infoLogin?.data?.data?.email)
+    localStorage.setItem('phone',infoLogin?.data?.data?.phone)
     if (infoLogin?.data?.code == '200') {
       navigate("/")
       dispatch(fetchUserById())

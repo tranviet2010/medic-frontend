@@ -73,3 +73,8 @@ export const addFormData = (url: any, data: any) => axiosInstance.post(url, data
 export const editFormRequest = (url: any, data: any) => axiosInstance.put(url, data);
 export const deleteFormRequest = (url: any, data: any) => axiosInstance.delete(url, data);
 export const getParam = () => axiosInstance.get('ap_params', { params: { limit: 100 } })
+
+
+
+export const getInfoFeNo = (url:any) => axiosInstance.get(url);
+export const postInfo = (url:any,data:any) => axiosInstance.post(url,data);

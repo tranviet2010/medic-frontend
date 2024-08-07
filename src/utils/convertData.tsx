@@ -64,3 +64,115 @@ export const convertUrlImage = (filePath:string) => {
     return filePath.split('/').pop();
 
 }
+
+export const DateToDay = (birthDate:any) => {
+    // Chuyển đổi chuỗi ngày tháng năm sinh thành đối tượng Date
+    const birth: any = new Date(birthDate);
+
+    // Lấy ngày hiện tại
+    const today :any = new Date();
+
+    // Tính số ngày giữa ngày sinh và ngày hiện tại
+    const diffTime = Math.abs(today - birth);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+    return diffDays;
+}
+
+export const getInfoHeight = (obj:any, check:any) => {
+
+    if (typeof obj !== 'object' || obj === null) {
+        return 'Đối tượng không hợp lệ';
+    }
+    const keys = Object.keys(obj);
+
+    // Duyệt qua từng khóa và kiểm tra xem khóa có trùng với các case không
+    for (let key of keys) {
+        switch (key) {
+            case 'up_height1':
+                return `Chiều cao hiện tại trên chuẩn độ 1 là ${(check - obj?.up_height1).toFixed(1)} (cm)`;
+            case 'up_height2':
+                return `Chiều cao hiện tại trên chuẩn độ 2 là ${(check - obj?.up_height2).toFixed(1)} (cm)`;
+            case 'up_height3':
+                return `Chiều cao hiện tại trên chuẩn độ 3 là ${(check - obj?.up_height3).toFixed(1)} (cm)`;
+            case 'dow_height1':
+                return `Chiều cao hiện tại dưới chuẩn độ 1 là ${(obj?.dow_height1 - check).toFixed(1)} (cm)`;
+            case 'dow_height2':
+                return `Chiều cao hiện tại dưới chuẩn độ 2 là ${(obj?.dow_height2 - check).toFixed(1)} (cm)`;
+            case 'dow_height3':
+                return `Chiều cao hiện tại dưới chuẩn độ 3 là ${(obj?.dow_height3 - check).toFixed(1)} (cm)`;
+            case 'height':
+                return `Chiều cao hiện tại đúng độ chuẩn`;
+
+            case 'up_weight1':
+                return `Cân nặng hiện tại trên chuẩn độ 1 là ${(check - obj?.up_weight1).toFixed(1)} (kg)`;
+            case 'up_weight2':
+                return `Cân nặng hiện tại trên chuẩn độ 2 là ${(check - obj?.up_weight2).toFixed(1)} (kg)`;
+            case 'up_weight3':
+                return `Cân nặng hiện tại trên chuẩn độ 3 là ${(check - obj?.up_weight3).toFixed(1)} (kg)`;
+            case 'dow_weight1':
+                return `Cân nặng hiện tại dưới chuẩn độ 1 là ${(obj?.dow_weight1 - check).toFixed(1)} (kg)`;
+            case 'dow_weight2':
+                return `Cân nặng hiện tại dưới chuẩn độ 2 là ${(obj?.dow_weight2 - check).toFixed(1)} (kg)`;
+            case 'dow_weight3':
+                return `Cân nặng hiện tại dưới chuẩn độ 3 là ${(obj?.dow_weight3 - check).toFixed(1)} (kg)`;
+            case 'weight':
+                return `Cân nặng hiện tại đúng độ chuẩn`;
+
+            default:
+                break;
+        }
+    }
+
+    // Nếu không có khóa nào khớp, trả về giá trị không hợp lệ
+    return 'Không có khóa hợp lệ';
+}
+
+export const getSum = (obj:any, check:any, obj20:any) => {
+    console.log("obj20",obj20);
+    if (typeof obj !== 'object' || obj === null) {
+        return 'Đối tượng không hợp lệ';
+    }
+    const keys = Object.keys(obj);
+
+    // Duyệt qua từng khóa và kiểm tra xem khóa có trùng với các case không
+    for (let key of keys) {
+        switch (key) {
+            case 'up_height1':
+                return `${(check - obj?.up_height1 + Number(obj20?.up_height1)).toFixed(1)} (cm)`;
+            case 'up_height2':
+                return `${(check - obj?.up_height2 + Number(obj20?.up_height2)).toFixed(1)} (cm)`;
+            case 'up_height3':
+                return `${(check - obj?.up_height3 + Number(obj20?.up_height3)).toFixed(1)} (cm)`;
+            case 'dow_height1':
+                return `${(check - obj?.dow_height1 + Number(obj20?.dow_height1)).toFixed(1)} (cm)`;
+            case 'dow_height2':
+                return `${(check - obj?.dow_height2 + Number(obj20?.dow_height2)).toFixed(1)} (cm)`;
+            case 'dow_height3':
+                return `${(check - obj?.dow_height3 + Number(obj20?.dow_height3)).toFixed(1)} (cm)`;
+            case 'height':
+                return `${(check - obj?.height + Number(obj20?.height)).toFixed(1)} (cm)`;
+
+            case 'up_weight1':
+                return `${(check - obj?.up_weight1 + Number(obj20?.up_weight1)).toFixed(1)} (kg)`;
+            case 'up_weight2':
+                return `${(check - obj?.up_weight2 + Number(obj20?.up_weight2)).toFixed(1)} (kg)`;
+            case 'up_weight3':
+                return `${(check - obj?.up_weight3 + Number(obj20?.up_weight3)).toFixed(1)} (kg)`;
+            case 'dow_weight1':
+                return `${(check - obj?.dow_weight1 + Number(obj20?.dow_weight1)).toFixed(1)} (kg)`;
+            case 'dow_weight2':
+                return `${(check - obj?.dow_weight2 + Number(obj20?.dow_weight2)).toFixed(1)} (kg)`;
+            case 'dow_weight3':
+                return `${(check -obj?.dow_weight3 + Number(obj20?.dow_weight3)).toFixed(1)} (kg)`;
+            case 'weight':
+                return `${(check - obj?.weight + Number(obj20?.weight)).toFixed(1)} (kg)`;
+
+            default:
+                break;
+        }
+    }
+
+    // Nếu không có khóa nào khớp, trả về giá trị không hợp lệ
+    return 'Không có khóa hợp lệ';
+}

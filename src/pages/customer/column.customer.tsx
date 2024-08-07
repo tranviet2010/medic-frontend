@@ -1,3 +1,4 @@
+import { Image } from "antd";
 import { convertImages, convertStatus, getConvertUnix } from "../../utils/convertData";
 import { CheckCircleTwoTone } from '@ant-design/icons';
 
@@ -8,7 +9,7 @@ export const ColumnCustomer = (value: any) => (
         { title: 'Tên công ty', dataIndex: 'company_name', key: 'type', align: 'center' },
         { title: 'Địa chỉ', dataIndex: 'address', key: 'type', align: 'center' },
         { title: 'Ghi chú', dataIndex: 'note', key: 'type', align: 'center' },
-        { title: 'Thuộc đại lý', dataIndex: 'agent', key: 'type', align: 'center', render:(val:any)=> (value.filter((valu:any)=>valu._id==val)[0]?.name)},
+        { title: 'Thuộc đại lý', dataIndex: 'agent', key: 'type', align: 'center', render: (val: any) => (value.filter((valu: any) => valu._id == val)[0]?.name) },
 
     ]
 )
@@ -43,5 +44,5 @@ export const ColumnInfoMature = [
     { title: 'Họ tên', dataIndex: 'sponsor', key: 'sponsor', align: 'center' },
     { title: 'Ngày tháng năm sinh', dataIndex: 'dob', key: 'type', align: 'center' },
     { title: 'Bệnh lý hiện tại', dataIndex: 'phatho', key: 'type', align: 'center' },
-    { title: 'File đính kèm', dataIndex: 'file', key: 'type', align: 'center' }
+    { title: 'File đính kèm', dataIndex: 'file', key: 'type', align: 'center', render: ((val: any) => (<Image width={100} src={`http://172.104.189.80/uploads/${val?.split('/').pop()}`} />)) }
 ]

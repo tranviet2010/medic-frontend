@@ -1,4 +1,4 @@
-import { Card, Col, Row } from 'antd';
+import { Button, Card, Col, Row } from 'antd';
 import styled from "styled-components"
 import { useLocation, useNavigate } from 'react-router-dom';
 import { FormCustom } from './form.customer';
@@ -8,6 +8,7 @@ import { ColumnInfo020, ColumnInfoChild, ColumnInfoMature } from './column.custo
 import { BorderColor } from '../../components/core/variable/variable';
 import { useEffect, useState } from 'react';
 import { getResult } from '../../api/comment.api';
+import { ButtonCore } from '../../components/core/button/buttonCore';
 
 export const AddFormStyle = styled.div`
   background-color: #fff;
@@ -63,9 +64,19 @@ export default function DetailCustomer() {
                     <Col span={24}>
                         <DivStyleInfo>
                         <b>Danh sách đối tượng tư vấn thuộc nhóm thai nhi</b>
+                        <ButtonCore type="button" style={{float:'right'}}
+                                onClick={() =>
+                                    navigate('/form/child', {
+                                        state: {
+                                            type: 'customer',
+                                        },
+                                    })
+                                }
+                            >{`+ Thêm mới`}</ButtonCore>
                         <BaseTable
                             columType={ColumnInfoChild}
                             dataSource={dataC}
+                            notAction
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />
@@ -74,9 +85,20 @@ export default function DetailCustomer() {
                     <Col span={24}>
                         <DivStyleInfo>
                         <b>Danh sách đối tượng tư vấn thuộc nhóm 0-20 tuổi</b>
+                        <ButtonCore type="button" style={{float:'right'}}
+                                onClick={() =>
+                                    navigate('/form/adult', {
+                                        state: {
+                                            type: 'customer',
+                                            data:dataT
+                                        },
+                                    })
+                                }
+                            >{`+ Thêm mới`}</ButtonCore>
                         <BaseTable
                             columType={ColumnInfo020}
                             dataSource={dataT}
+                            notAction
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />
@@ -85,9 +107,19 @@ export default function DetailCustomer() {
                     <Col span={24}>
                         <DivStyleInfo>
                         <b>Danh sách đối tượng tư vấn thuộc nhóm trưởng hành</b>
+                        <ButtonCore type="button" style={{float:'right'}}
+                                onClick={() =>
+                                    navigate('/form/mature', {
+                                        state: {
+                                            type: 'customer',
+                                        },
+                                    })
+                                }
+                            >{`+ Thêm mới`}</ButtonCore>
                         <BaseTable
                             columType={ColumnInfoMature}
                             dataSource={dataL}
+                            notAction
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />

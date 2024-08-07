@@ -23,16 +23,23 @@ export const FormChild: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập tuổi" name="age" label="Tuổi thai (Tuần)" required />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="averageFemur" label="Giá trị trung bình xương đùi" required/>
+                    <BaseFormInput type="option" placeholder="" name="male" label="Giới tính" data={[
+                        { autoid: "Nam", value: "Nam" },
+                        { autoid: "Nữ", value: "Nữ" },
+
+                    ]} />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limitFemur" label="Ngưỡng giới hạn xương đùi" required/>
+                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="averageFemur" label="Giá trị trung bình xương đùi" required />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="averageNose" label="Giá trị trung bình xương mũi" required/>
+                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limitFemur" label="Ngưỡng giới hạn xương đùi" required />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limitNose" label="Ngưỡng giới hạn xương mũi" required/>
+                    <BaseFormInput type="input" placeholder="Nhập giá trị trung bình" name="averageNose" label="Giá trị trung bình xương mũi" required />
+                </Col>
+                <Col span={8} >
+                    <BaseFormInput type="input" placeholder="Nhập ngưỡng giới hạn" name="limitNose" label="Ngưỡng giới hạn xương mũi" required />
                 </Col>
             </Row>
 
