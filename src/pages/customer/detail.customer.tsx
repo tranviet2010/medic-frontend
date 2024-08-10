@@ -29,6 +29,7 @@ export default function DetailCustomer() {
     const [dataT,setDataT] = useState([])
     const [dataL,setDataL] = useState([])
     const dataInfoNav: any = state?.data
+    console.log("dataInfoNav",dataInfoNav);
     
     useEffect(()=>{
         getResult({type_result:"C",phone:dataInfoNav?.phone}).then((res)=>{
@@ -47,17 +48,17 @@ export default function DetailCustomer() {
             <Card
                 title="Thông Tin Chi Tiết Khách Hàng"
                 extra={
-                    < p onClick={() => navigate(configCustome.navigate)} style={{ cursor: 'pointer', fontSize: '16px', fontWeight: 600 }}>X</p>
+                    < p onClick={() => navigate(configCustome?.navigate)} style={{ cursor: 'pointer', fontSize: '16px', fontWeight: 600 }}>X</p>
                 }
             >
                 <Row gutter={8}>
                     <Col span={24}><h2>1.Thông tin khách hàng</h2></Col>
-                    <Col span={8}><p>Họ tên: {dataInfoNav.name}</p></Col>
-                    <Col span={8}><p>Số điện thoại: {dataInfoNav.phone}</p></Col>
-                    <Col span={8}><p>Tên công ty: {dataInfoNav.company_name}</p></Col>
-                    <Col span={8}><p>Địa chỉ: {dataInfoNav.address}</p></Col>
-                    <Col span={8}><p>Ghi chú: {dataInfoNav.note}</p></Col>
-                    <Col span={8}><p>Đại lý: {dataInfoNav.agent}</p></Col>
+                    <Col span={8}><p>Họ tên: {dataInfoNav?.name}</p></Col>
+                    <Col span={8}><p>Số điện thoại: {dataInfoNav?.phone}</p></Col>
+                    <Col span={8}><p>Tên công ty: {dataInfoNav?.company_name}</p></Col>
+                    <Col span={8}><p>Địa chỉ: {dataInfoNav?.address}</p></Col>
+                    <Col span={8}><p>Ghi chú: {dataInfoNav?.note}</p></Col>
+                    <Col span={8}><p>Đại lý: {dataInfoNav?.agent}</p></Col>
                 </Row>
                 <Row gutter={8}>
                     <Col span={24}><h2>2.Lịch sử</h2></Col>
@@ -76,7 +77,9 @@ export default function DetailCustomer() {
                         <BaseTable
                             columType={ColumnInfoChild}
                             dataSource={dataC}
-                            notAction
+                            cus
+                            edit
+                            urlInfo="/customer/info/detailChild"
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />
@@ -98,7 +101,9 @@ export default function DetailCustomer() {
                         <BaseTable
                             columType={ColumnInfo020}
                             dataSource={dataT}
-                            notAction
+                            cus
+                            edit
+                            urlInfo="/customer/info/detailAdult"
                             // pagination={pagination}
                             // onChangePaniga={onChangePaniga}
                         />

@@ -31,10 +31,10 @@ export const FormAgent: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập tên đại lý" name="name" label="Tên đại lý" required />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập số điện thoại" name="phone" label="Số điện thoại" />
+                    <BaseFormInput type="input" placeholder="Nhập số điện thoại" name="phone" label="Số điện thoại" required/>
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập tên công ty" name="company_name" label="Tên công ty" required />
+                    <BaseFormInput type="input" placeholder="Nhập tên công ty" name="company_name" label="Tên công ty" />
                 </Col>
                 <Col span={8} >
                     <BaseFormInput type="input" placeholder="Nhập địa chỉ" label="Địa chỉ" name="address" />
@@ -46,7 +46,7 @@ export const FormAgent: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập mật khẩu" label="Mật khẩu" name="password" required/>
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="option" placeholder="Đối tác" label="Chọn đối tác" name="partner" data={dataPartner} />
+                    <BaseFormInput type="option" placeholder="Đối tác" label="Chọn đối tác" name="partner" data={dataPartner} required/>
                 </Col>
 
             </Row>

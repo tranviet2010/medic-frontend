@@ -46,7 +46,7 @@ export const FormCustom: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập email" name="email" label="Email" />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="option" placeholder="Chọn đại lý" name="agent" label="Đại lý" data={dataAgent}/>
+                    <BaseFormInput type="option" placeholder="Chọn đại lý" name="agent" label="Đại lý" data={dataAgent} required/>
                 </Col>
                 
 

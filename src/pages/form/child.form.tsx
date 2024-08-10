@@ -9,6 +9,7 @@ import { getInfoFeNo, postInfo } from '../../api/request';
 import Notifi from '../../components/core/noti';
 import { addSave } from '../../utils/textUnits';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 
 const ChildStyle = styled.div`
@@ -28,7 +29,7 @@ function ChildForm() {
     const urlBack = state?.type == 'customer' ? "/customer" : "/"
 
     const onFinish = (value: any) => {
-        let url = `nose-femur/finByQuery?age=${value?.age}&averageNose=${value.averageNose}&averageFemur=${value.averageFemur}`
+        let url = `nose-femur/finByQuery?age=${value?.age}&male=${value?.male}&averageNose=${value.averageNose}&averageFemur=${value.averageFemur}`
         getInfoFeNo(url).then((res: any) => {
             let dataRespon = res?.data?.data
             let resultCaculNo = `Ngưỡng giới hạn dự đoán xương mũi là: Từ ` + dataRespon[1]?.newStartNose + `(mm)` + ` đến ` + dataRespon[1]?.newEndNose + `(mm) `
@@ -41,11 +42,12 @@ function ChildForm() {
                 number_child: value?.age,
                 height_femur: value?.averageFemur,
                 height_nose: value?.averageNose,
+                date_check:moment().format('DD/MM/YYYY'),
                 result: resultCaculNo + resultCaculFe,
                 address: value?.address,
                 male: value?.male,
                 email: value?.email,
-                note: value?.note,
+                phatho: value?.phatho,
 
             }
 

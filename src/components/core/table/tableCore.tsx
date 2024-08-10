@@ -41,6 +41,7 @@ interface BaseTable {
     user?: boolean
     del?: boolean
     cus?: any
+    edit?:any
 }
 // todo handler edit and navigate
 export const BaseTable = ({
@@ -56,7 +57,8 @@ export const BaseTable = ({
     notAction,
     user,
     del,
-    cus
+    cus,
+    edit
 }: BaseTable) => {
     const { loading } = useSelector((state: {
         global: {
@@ -85,7 +87,7 @@ export const BaseTable = ({
             render: (item) => (
                 <>
 
-                    <span
+                    {edit ? null : <span
                         onClick={() =>
                             navigate('edit', {
                                 state: {
@@ -98,7 +100,7 @@ export const BaseTable = ({
                         title="Sửa"
                     >
                         <EditOutlined />
-                    </span>
+                    </span>}
                     {
                         del ? (
                             <span

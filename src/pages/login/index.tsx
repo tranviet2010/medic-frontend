@@ -61,7 +61,7 @@ const LoginForm = () => {
         <div className="form">
           <h2>ĐĂNG NHẬP TÀI KHOẢN</h2>
           <Form onFinish={onFinish}>
-            <BaseFormInput type="input" label="Tên đăng nhập" name="email" />
+            <BaseFormInput type="input" label="Số điện thoại" name="phone" />
             <BaseFormInput label="Mật khẩu" type="input" name="password" password="password" />
             <div className="forget">
               <span><Checkbox /> Nhớ mật khẩu</span>

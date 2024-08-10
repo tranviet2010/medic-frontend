@@ -9,6 +9,7 @@ import { getInfoFeNo, postInfo } from '../../api/request';
 import Notifi from '../../components/core/noti';
 import { addSave } from '../../utils/textUnits';
 import { useSelector } from 'react-redux';
+import moment from 'moment';
 
 const ChildStyle = styled.div`
   background-color: #fff;
@@ -27,7 +28,7 @@ function AdultForm() {
     const urlBack = state?.type == 'customer' ? "/customer" : "/"
 
     const onFinish = (value: any) => {
-        let url = `height/finByQuery?number_day=${DateToDay(value?.date)}&height=${value.height}&weight=${value.weight}`
+        let url = `height/finByQuery?number_day=${DateToDay(value?.date)}&male=${value?.male}&height=${value.height}&weight=${value.weight}`
         getInfoFeNo(url).then((res: any) => {
             let dataRespon = res?.data?.data
 
@@ -42,12 +43,14 @@ function AdultForm() {
                 dob: value?.date,
                 phone: state?.type == 'customer' ? state?.data[0].phone : (role == '0' ? value?.phone : role == '1' ? idByEmailPartner : getIdByEmailAgent),
                 male: value?.male,
+                date_check: moment().format('DD/MM/YYYY'),
                 weight: value?.weight,
                 height: value?.height,
                 result: resultHeight + resultWeight + result20Height + result20Weight,
                 address: value?.address,
                 email: value?.email,
                 note: value?.note,
+                phatho:value?.phatho
 
             }
             postInfo('result', data).then((res) => {

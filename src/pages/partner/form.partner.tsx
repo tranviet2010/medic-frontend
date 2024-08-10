@@ -24,13 +24,13 @@ export const FormPartner: React.FC<any> = ({ initialValues, type }) => {
                     <BaseFormInput type="input" placeholder="Nhập số điện thoại" name="phone" label="Số điện thoại" required/>
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập tên công ty đối tác" name="company_name" label="Tên công ty đối tác" required />
+                    <BaseFormInput type="input" placeholder="Nhập tên công ty đối tác" name="company_name" label="Tên công ty đối tác" />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập địa chỉ" label="Địa chỉ" name="address"  />
+                    <BaseFormInput type="input" placeholder="Nhập địa chỉ" label="Địa chỉ" name="address" />
                 </Col>
                 <Col span={8} >
-                    <BaseFormInput type="input" placeholder="Nhập email" label="Email" name="email" />
+                    <BaseFormInput type="input" placeholder="Nhập email" label="Email" name="email" required/>
                 </Col>
                 <Col span={8} >
                     <BaseFormInput type="input" placeholder="Nhập password" label="Mật khẩu" name="password" required/>

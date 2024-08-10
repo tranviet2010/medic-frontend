@@ -19,6 +19,8 @@ const RouterCustomer = lazy(() => import(/* webpackChunkName: "route-permission"
 const RouterCustomerEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/edit.customer'));
 const RouterCustomerAdd = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/add.customer'));
 const RouterCustomerInfo = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/detail.customer'));
+const RouterCustomerInfoDetail = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/resultChild.customer'));
+const RouterCustomerInfoDetailA = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/customer/resultAdult.customer'));
 
 const RouterAdult = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/adult'));
 const RouterAdultEdit = lazy(() => import(/* webpackChunkName: "route-permission"*/ '../pages/adult/edit.adult'));
@@ -84,6 +86,14 @@ const routeList: RouteObject[] = [
             {
                 path: 'customer/edit',
                 element: <RouterCustomerEdit />,
+            },
+            {
+                path: 'customer/info/detailChild',
+                element: <RouterCustomerInfoDetail />,
+            },
+            {
+                path: 'customer/info/detailAdult',
+                element: <RouterCustomerInfoDetailA />,
             },
             {
                 path: 'customer/info',
