@@ -10,8 +10,8 @@ interface State {
     activeTabs?: string | number
     dataModal?: any
     modal?: boolean
+    activeModalId?: any
 }
-
 
 const initialState: State = {
     loading: false,
@@ -20,7 +20,8 @@ const initialState: State = {
     loadingedit: false,
     activeTabs: 1,
     dataModal: [],
-    modal: false
+    modal: false,
+    activeModalId: null
 };
 
 const globalSlice = createSlice({
@@ -28,29 +29,32 @@ const globalSlice = createSlice({
     initialState,
     reducers: {
         setGlobalState(state, action: PayloadAction<Partial<State>>) {
-            Object.assign(state, action.payload)
+            return { ...state, ...action.payload };
         },
-        setModalTrue(state) {
-            state.statusModal = true
+        setModalTrue(state, action: PayloadAction<string | number>) { // Thêm id vào payload
+            state.statusModal = true;
+            state.activeModalId = action.payload; // Lưu id của modal
         },
         setModalFalse(state) {
-            state.statusModal = false
-            state.dataModal = []
+            state.statusModal = false;
+            state.dataModal = [];
+            state.activeModalId = null; // Đặt lại activeModalId khi modal đóng
         },
-        setDataModal(state, action) {
-            state.dataModal = action.payload
+        setDataModal(state, action: PayloadAction<any>) {
+            state.dataModal = action.payload;
         },
-
-        modalTrue(state) {
-            state.modal = true
+        modalTrue(state, action: PayloadAction<string | number>) { // Thêm id vào payload
+            state.modal = true;
+            state.activeModalId = action.payload; // Lưu id của modal
         },
         modalFalse(state) {
-            state.modal = false
-            state.dataModal = []
+            state.modal = false;
+            state.dataModal = [];
+            state.activeModalId = null; // Đặt lại activeModalId khi modal đóng
         },
-
     },
 });
+
 
 export const { setGlobalState, setModalTrue, setModalFalse, setDataModal, modalTrue, modalFalse } = globalSlice.actions;
 

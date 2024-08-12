@@ -1,6 +1,6 @@
 import { Col, Form, Modal, Row, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import { EditOutlined, InfoCircleOutlined,DeleteOutlined } from '@ant-design/icons';
+import { EditOutlined, InfoCircleOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 // import { deleteServiceInfo } from '@/api/layout.api';
@@ -41,7 +41,9 @@ interface BaseTable {
     user?: boolean
     del?: boolean
     cus?: any
-    edit?:any
+    edit?: any
+    onClickForm?: Function | any
+    modalC?: any
 }
 // todo handler edit and navigate
 export const BaseTable = ({
@@ -58,7 +60,9 @@ export const BaseTable = ({
     user,
     del,
     cus,
-    edit
+    edit,
+    onClickForm,
+    modalC
 }: BaseTable) => {
     const { loading } = useSelector((state: {
         global: {
@@ -69,13 +73,14 @@ export const BaseTable = ({
     const navigate = useNavigate();
     const { confirm } = Modal;
     const [selectedRowKeys, setSelectedRowKeys] = useState<any>([]);
-    const dataCustomer = useSelector((state: any) => state.usersSlice.param.CUSTOMER)?.map((val: any) => ({ ...val, autoid: val.name }))
     const [typeC, setTypeC] = useState<any>('');
     const statusModal = useSelector((state: any) => state.global.statusModal);
-    const custId = localStorage.getItem('custId');
 
 
     const [form] = Form.useForm()
+    const onClickForm1 = (value: any,type:any) => {
+        onClickForm(value,type)
+    }
 
     const columnsFix: ColumnsType<any> = [
         {
@@ -116,14 +121,16 @@ export const BaseTable = ({
                     }
                     {cus ? (
                         <span
-                            onClick={() =>
-                                navigate(urlInfo || 'info', {
+                            onClick={() => (
+                                !modalC ? navigate(urlInfo || 'info', {
                                     state: {
                                         data: item,
                                         type: 'info'
                                     },
                                 })
-                            }
+                                    :
+                                    onClickForm1(item,item?.type_result)
+                            )}
                             style={{ cursor: 'pointer', marginLeft: '1.5rem' }}
                             title="Thông tin"
                         >
@@ -135,10 +142,10 @@ export const BaseTable = ({
             ),
         },
     ]
-    
+
 
     const deleteManyId = (id: any) => {
-        store.dispatch(setModalTrue());
+        // store.dispatch(setModalTrue());
         confirm({
             title: 'Cảnh báo',
             content: `Bạn có muốn xóa bản ghi này`,
@@ -172,7 +179,7 @@ export const BaseTable = ({
         })
     }
 
-    
+
     useEffect(() => {
         form.setFieldsValue({ custType: typeC?.custType })
     }, [typeC])

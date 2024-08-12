@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import moment from 'moment/moment';
+import store from '../../stores';
+import { setModalFalse } from '../../stores/global.store';
 
 const ChildStyle = styled.div`
   background-color: #fff;
@@ -13,12 +15,10 @@ const ChildStyle = styled.div`
   margin-bottom:1rem
 `
 
-function ResultCustomer() {
+function ResultCustomer({dataInfoNavigate}:any) {
     const { state } = useLocation()
     const navigate = useNavigate();
     const textRef = useRef<HTMLInputElement>(null);
-    const dataInfoNavigate = state?.data ? state?.data : []
-    console.log("dataInfoNavigate",dataInfoNavigate);
 
     const getFormattedDate = () => {
         const date = new Date();
@@ -37,7 +37,7 @@ function ResultCustomer() {
             // Tạo một link để tải ảnh xuống
             const link = document.createElement('a');
             link.href = imgData;
-            link.download = 'text-image.png';
+            link.download = 'image.png';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -76,7 +76,7 @@ function ResultCustomer() {
             <Col xs={24} sm={24} md={24} lg={24} xl={24} style={{ display: 'flex', justifyContent: 'center' }}>
                 <Button style={{ marginRight: "2rem" }} type="primary" onClick={handleConvert}>Tải ảnh xuống</Button>
 
-                <Button type="primary" onClick={() => { navigate('/customer') }}>Đóng</Button>
+                <Button type="primary" onClick={() => store.dispatch(setModalFalse())}>Đóng</Button>
             </Col>
         </Row>
     );

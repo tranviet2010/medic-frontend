@@ -8,11 +8,16 @@ import { addError, addSucc, updateError, updateSucc } from '../../../utils/textU
 import { addFormData, editFormRequest } from '../../../api/request';
 import TextArea from 'antd/es/input/TextArea';
 import UploadFile from '../../../api/uploadfile';
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../../../stores';
+import { fetchUserById } from '../../../stores/param';
 
 export const FormSubmit = ({ type, initialValues, children, onchange, configUrl, notNote, file, ...props }: any) => {
     const [form] = Form.useForm()
     const navigate = useNavigate()
     const [url, setUrl] = useState()
+    const dispatch = useDispatch<AppDispatch>()
+
     const onFinish = (values: any) => {
         let configValue = props.adult ? {
             ...initialValues,
@@ -50,6 +55,7 @@ export const FormSubmit = ({ type, initialValues, children, onchange, configUrl,
                     Notifi("succ", addSucc)
                     form.resetFields();
                     navigate(configUrl?.navigate)
+                    dispatch(fetchUserById())
                 } else {
                     // Notifi("error", addError)
                 }

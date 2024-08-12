@@ -10,6 +10,8 @@ import Notifi from '../../components/core/noti';
 import { addSave } from '../../utils/textUnits';
 import { useSelector } from 'react-redux';
 import moment from 'moment';
+import store from '../../stores';
+import { setModalFalse } from '../../stores/global.store';
 
 const ChildStyle = styled.div`
   background-color: #fff;
@@ -25,7 +27,8 @@ function AdultForm() {
     const { state } = useLocation()
     const idByEmailPartner = useSelector((state: any) => state.usersSlice?.param.getIdEmail[0]?.phone)
     const getIdByEmailAgent = useSelector((state: any) => state?.usersSlice?.param?.getIdByEmailAgent[0]?.phone)
-    const urlBack = state?.type == 'customer' ? "/customer" : "/"
+    const statusModal = useSelector((state: any) => state.global.statusModal);
+    const urlBack = state?.type == statusModal ? "/customer" : "/"
 
     const onFinish = (value: any) => {
         let url = `height/finByQuery?number_day=${DateToDay(value?.date)}&male=${value?.male}&height=${value.height}&weight=${value.weight}`
@@ -50,12 +53,13 @@ function AdultForm() {
                 address: value?.address,
                 email: value?.email,
                 note: value?.note,
-                phatho:value?.phatho
+                phatho: value?.phatho
 
             }
             postInfo('result', data).then((res) => {
                 Notifi("succ", addSave)
-                navigate(urlBack)
+                statusModal ? store.dispatch(setModalFalse()) : navigate('/')
+                form.resetFields();
             })
         })
     };
@@ -112,61 +116,62 @@ function AdultForm() {
                                 </Form.Item>
                             </ChildStyle>
                             <Form.Item style={{ display: 'flex', justifyContent: 'center' }}>
-                                <Button type="primary" style={{ marginRight: "2rem" }} htmlType="submit" onClick={() => navigate(urlBack)}>
-                                    Quay lại
-                                </Button>
-                                <Button type="primary" htmlType="submit">
-                                    Lưu kết quả
-                                </Button>
+                                <Button type="primary" style={{ marginRight: "2rem" }} htmlType="submit" onClick={() => statusModal ?
+                                    store.dispatch(setModalFalse()) : navigate('/')}>
+                                Đóng
+                            </Button>
+                            <Button type="primary" htmlType="submit">
+                                Lưu kết quả
+                            </Button>
+                        </Form.Item>
+                    </Col>
+                    <Col span={12}>
+                        <ChildStyle>
+                            <h4>Thông tin đối tượng</h4>
+                            <Form.Item
+                                label="Họ tên"
+                                name="sponsor"
+                                rules={[{ required: true, message: 'Vui lòng nhập số tuần thai nhi' }]}
+                            >
+                                <Input />
                             </Form.Item>
-                        </Col>
-                        <Col span={12}>
-                            <ChildStyle>
-                                <h4>Thông tin đối tượng</h4>
-                                <Form.Item
-                                    label="Họ tên"
-                                    name="sponsor"
-                                    rules={[{ required: true, message: 'Vui lòng nhập số tuần thai nhi' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
 
-                                <Form.Item name="date" label="Ngày tháng năm sinh">
-                                    <DatePicker />
-                                </Form.Item>
+                            <Form.Item name="date" label="Ngày tháng năm sinh">
+                                <DatePicker />
+                            </Form.Item>
 
-                                <Form.Item label="Giới tính" name="male">
-                                    <Select>
-                                        <Select.Option value="0">Nam</Select.Option>
-                                        <Select.Option value="1">Nữ</Select.Option>
-                                    </Select>
-                                </Form.Item>
+                            <Form.Item label="Giới tính" name="male">
+                                <Select>
+                                    <Select.Option value="0">Nam</Select.Option>
+                                    <Select.Option value="1">Nữ</Select.Option>
+                                </Select>
+                            </Form.Item>
 
-                                <Form.Item
-                                    label="Chiều cao hiện tại"
-                                    name="height"
-                                    rules={[{ message: 'Please input your email!' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
+                            <Form.Item
+                                label="Chiều cao hiện tại"
+                                name="height"
+                                rules={[{ message: 'Please input your email!' }]}
+                            >
+                                <Input />
+                            </Form.Item>
 
-                                <Form.Item
-                                    label="Cân nặng hiện tại"
-                                    name="weight"
-                                    rules={[{ message: 'Please input your email!' }]}
-                                >
-                                    <Input />
-                                </Form.Item>
+                            <Form.Item
+                                label="Cân nặng hiện tại"
+                                name="weight"
+                                rules={[{ message: 'Please input your email!' }]}
+                            >
+                                <Input />
+                            </Form.Item>
 
-                                <Form.Item label="Bệnh lý nếu có" name="phatho">
-                                    <TextArea rows={7} placeholder="Ghi chú " maxLength={244} />
-                                </Form.Item>
-                            </ChildStyle>
-                        </Col>
-                    </Row>
-                </Form>
-            </Col>
-        </Row>
+                            <Form.Item label="Bệnh lý nếu có" name="phatho">
+                                <TextArea rows={7} placeholder="Ghi chú " maxLength={244} />
+                            </Form.Item>
+                        </ChildStyle>
+                    </Col>
+                </Row>
+            </Form>
+        </Col>
+        </Row >
     );
 }
 

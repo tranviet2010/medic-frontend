@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { useLocation, useNavigate } from 'react-router-dom';
 import html2canvas from 'html2canvas';
 import moment from 'moment/moment';
+import { setModalFalse } from '../../stores/global.store';
+import store from '../../stores';
 
 const ChildStyle = styled.div`
   background-color: #fff;
@@ -13,12 +15,10 @@ const ChildStyle = styled.div`
   margin-bottom:1rem
 `
 
-function ResultAdult() {
+function ResultAdult({dataInfoNavigate}:any) {
     const { state } = useLocation()
     const navigate = useNavigate();
     const textRef = useRef<HTMLInputElement>(null);
-    const dataInfoNavigate = state?.data ? state?.data : []
-    console.log("dataInfoNavigate",dataInfoNavigate);
 
     const getFormattedDate = () => {
         const date = new Date();
@@ -37,16 +37,16 @@ function ResultAdult() {
             // Tạo một link để tải ảnh xuống
             const link = document.createElement('a');
             link.href = imgData;
-            link.download = 'text-image.png';
+            link.download = 'image.png';
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
         }
     }
-        
+
 
     return (
-        <Row gutter={[16,16]}>
+        <Row gutter={[16, 16]}>
             <Col xs={24} sm={16} md={12} lg={8} xl={12} ref={textRef}>
                 <ChildStyle>
                     <h5>Thông tin người bảo trợ</h5>
@@ -55,10 +55,10 @@ function ResultAdult() {
                     <p>Địa chỉ: {dataInfoNavigate?.address}</p>
                 </ChildStyle>
 
-                
+
             </Col>
             <Col xs={24} sm={16} md={12} lg={8} xl={12} ref={textRef}>
-               
+
 
                 <ChildStyle>
                     <h5>Thông tin phân tích</h5>
@@ -70,14 +70,14 @@ function ResultAdult() {
                     <p>Cân nặng hiện tại: {dataInfoNavigate?.weight} (kg)</p>
                     <p>Bệnh lý nếu có: {dataInfoNavigate?.phatho}</p>
                     <p>Kết quả: {dataInfoNavigate?.result}</p>
-                    
+
 
                 </ChildStyle>
             </Col>
             <Col xs={24} sm={24} md={24} lg={24} xl={24} style={{ display: 'flex', justifyContent: 'center' }}>
                 <Button style={{ marginRight: "2rem" }} type="primary" onClick={handleConvert}>Tải ảnh xuống</Button>
 
-                <Button type="primary" onClick={() => { navigate('/customer') }}>Đóng</Button>
+                <Button type="primary" onClick={() => store.dispatch(setModalFalse())}>Đóng</Button>
             </Col>
         </Row>
     );

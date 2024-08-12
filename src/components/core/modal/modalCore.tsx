@@ -20,15 +20,18 @@ export interface ModalCore {
     status?: boolean
     width?: number
     modalHeight?: boolean
+    modalId?:any
 }
 
-const ModalCore: React.FC<ModalCore> = ({ nameButton, title, children, status, width, modalHeight }) => {
+const ModalCore: React.FC<ModalCore> = ({ nameButton, title, children, status, width, modalHeight,modalId }) => {
 
     const [isModalOpen, setIsModalOpen] = useState(true);
     const statusModal = useSelector((state: any) => state.global.statusModal);
+    const activeModalId = useSelector((state: any) => state.global.activeModalId);
+
 
     const showModal = () => {
-        store.dispatch(setModalTrue());
+        store.dispatch(setModalTrue(modalId));
         // setIsModalOpen(true);
     }
     const handleOk = () => {

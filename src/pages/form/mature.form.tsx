@@ -9,6 +9,8 @@ import { postInfo } from '../../api/request';
 import Notifi from '../../components/core/noti';
 import { addSave } from '../../utils/textUnits';
 import { useSelector } from 'react-redux';
+import store from '../../stores';
+import { setModalFalse } from '../../stores/global.store';
 
 const ChildStyle = styled.div`
   background-color: #fff;
@@ -26,6 +28,7 @@ function MatureForm() {
     const idByEmailPartner = useSelector((state: any) => state.usersSlice.param.getIdEmail[0]?.phone)
     const getIdByEmailAgent = useSelector((state: any) => state?.usersSlice?.param?.getIdByEmailAgent[0]?.phone)
     const urlBack = state?.type == 'customer' ? "/customer" : "/"
+    const statusModal = useSelector((state: any) => state.global.statusModal);
 
     const onFinish = (value: any) => {
         const dataResult = {
@@ -44,7 +47,8 @@ function MatureForm() {
 
         postInfo('result', dataResult).then((res) => {
             Notifi("succ", addSave)
-            navigate(urlBack)
+            statusModal ? store.dispatch(setModalFalse()) : navigate('/')
+            form.resetFields();
         })
     };
     const handeleFile = (url: any) => {
@@ -126,8 +130,9 @@ function MatureForm() {
                     </ChildStyle>
 
                     <Form.Item style={{ display: 'flex', justifyContent: 'center' }}>
-                        <Button type="primary" style={{ marginRight: "2rem" }} htmlType="submit" onClick={() => navigate(urlBack)}>
-                            Quay lại
+                        <Button type="primary" style={{ marginRight: "2rem" }} htmlType="submit" onClick={() => statusModal ?
+                                    store.dispatch(setModalFalse()) : navigate('/')}>
+                            Đóng
                         </Button>
                         <Button type="primary" htmlType="submit">
                             Lưu kết quả
