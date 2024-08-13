@@ -12,6 +12,10 @@ import BaseFieldset from "../../components/core/fieldset";
 
 export const FormAdult: React.FC<any> = ({ initialValues, type }) => {
     const [initialValue, setInitialValue] = useState<any>(initialValues)
+
+    useEffect(()=>{
+
+    },[initialValues])
     return (
         <FormSubmit
             initialValues={initialValue}

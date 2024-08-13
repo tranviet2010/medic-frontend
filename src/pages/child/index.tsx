@@ -4,7 +4,7 @@ import { paginationShared } from "../../components/core/variable/variable"
 import { useSelector } from "react-redux"
 import { Col, Form } from "antd"
 import BaseFormInput from "../../components/core/input/formInput"
-import { getChild } from "../../api/comment.api"
+import { configChild, getChild } from "../../api/comment.api"
 import dayjs from "dayjs"
 import { BaseTable } from "../../components/core/table/tableCore"
 import { ColumnChild } from "./column.child"
@@ -73,6 +73,8 @@ export default function Child() {
                 dataSource={data}
                 user
                 pagination={pagination}
+                del
+                configUrl={configChild}
             />
         </>
     )

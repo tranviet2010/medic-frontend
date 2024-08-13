@@ -7,6 +7,7 @@ import { Col } from "antd"
 import { getAgent } from "../../api/custom.api"
 import BaseFormInput from "../../components/core/input/formInput"
 import { ColumnAgent } from "./column.agent"
+import { configAgent } from "../../api/comment.api"
 // import { IdUser } from "../../utils/instant"
 
 
@@ -72,6 +73,8 @@ export default function City() {
                 dataSource={data}
                 user
                 pagination={pagination}
+                del
+                configUrl={configAgent}
             // onChangePaniga={onChangePaniga}
             />
         </>

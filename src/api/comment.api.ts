@@ -12,6 +12,7 @@ export const configCustomer = {
     urlEdit: "customer",
     urlAdd: "customer",
     urlGetInfo: "customer",
+    urlDelete: "customer",
 }
 
 
@@ -29,6 +30,7 @@ export const configChild = {
     urlEdit: "nose-femur",
     urlAdd: "nose-femur",
     urlGetInfo: "nose-femur",
+    urlDelete: "nose-femur",
 }
 
 export const configAdult = {
@@ -63,6 +65,7 @@ export const configProduct = {
     urlEdit: "product",
     urlAdd: "product",
     urlGetInfo: "product",
+    urlDelete:"product"
 }
 
 export const configCourse = {
@@ -71,6 +74,7 @@ export const configCourse = {
     urlEdit: "course",
     urlAdd: "course",
     urlGetInfo: "course",
+    urlDelete:"course"
 }
 
 export const configNation = {
@@ -95,6 +99,7 @@ export const configAgent = {
     urlEdit: "agent",
     urlAdd: "agent",
     urlGetInfo: "agent",
+    urlDelete:"agent"
 }
 
 export const configSchool = {

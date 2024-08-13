@@ -7,6 +7,7 @@ import { Col } from "antd"
 import BaseFormInput from "../../components/core/input/formInput"
 import { getPartner, getProductN } from "../../api/custom.api"
 import { ColumnProduct } from "./column.product"
+import { configProduct } from "../../api/comment.api"
 
 
 export default function Product() {
@@ -63,6 +64,8 @@ export default function Product() {
                 dataSource={data}
                 user
                 pagination={pagination}
+                del
+                configUrl={configProduct}
                 // onChangePaniga={onChangePaniga}
             />
         </>

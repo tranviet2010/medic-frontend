@@ -2,12 +2,20 @@ import { useCallback, useEffect, useState } from "react"
 import FormSearch from "../../components/core/search/formSearch"
 import { paginationShared } from "../../components/core/variable/variable"
 import { useSelector } from "react-redux"
-import { Col, Form, Table } from "antd"
+import { Col, Form, Space, Table } from "antd"
 import BaseFormInput from "../../components/core/input/formInput"
 import { getAdult } from "../../api/comment.api"
 import ColumnGroup from "antd/es/table/ColumnGroup"
 import Column from "antd/es/table/Column"
 import { Age, AgeMonth, convertAge, convertAgeMonth } from "../../utils/instant"
+import { useNavigate } from "react-router-dom"
+import { EditOutlined, InfoCircleOutlined, DeleteOutlined } from '@ant-design/icons';
+import confirm from "antd/es/modal/confirm"
+import { deleteFormRequest } from "../../api/request"
+import Notifi from "../../components/core/noti"
+import store from "../../stores"
+import { setModalFalse } from "../../stores/global.store"
+
 
 export default function Adult() {
     const [data, setData] = useState([])
@@ -18,6 +26,7 @@ export default function Adult() {
     const [valueSearch, setValueSearch] = useState<any>()
     const [editingKey, setEditingKey] = useState('');
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
     const [form] = Form.useForm();
 
@@ -36,6 +45,32 @@ export default function Adult() {
     const onSearch = (value: any) => {
         setValueSearch(value)
         fetchData(pagination, value)
+    }
+        const deleteManyId = (id: any) => {
+        // store.dispatch(setModalTrue());
+        confirm({
+            title: 'Cảnh báo',
+            content: `Bạn có muốn xóa bản ghi này`,
+            async onOk() {
+                try {
+                    let url = 'height/' + id;
+                    deleteFormRequest(url, {}).then((res: any) => {
+                        if (res?.status == 200) {
+                            Notifi('succ', `Xóa thành công bản ghi`);
+                            store.dispatch(setModalFalse());
+                            // setSelectedRowKeys([]);
+                        }
+                        else {
+
+                        }
+                    });
+                } catch (e) {
+                }
+            },
+            onCancel() {
+                store.dispatch(setModalFalse());
+            },
+        });
     }
 
     useEffect(() => {
@@ -68,7 +103,7 @@ export default function Adult() {
                 </Col>
             </FormSearch>
             <b>Bé trai</b>
-            <Table dataSource={data?.filter((val:any)=>val.male == '0')} bordered>
+            <Table dataSource={data?.filter((val: any) => val.male == '0')} bordered>
                 <Column title="" key="age" render={(value) => `${convertAge(value.age)} ${convertAgeMonth(value.month_age)}`} width={150} align="center" />
                 <ColumnGroup title="CÂN NẶNG (KG)">
                     <Column title="Trên chuẩn độ 3" dataIndex="up_weight" key="up_weight" width={50} align="center" render={(value) => value.up_weight3} />
@@ -89,21 +124,43 @@ export default function Adult() {
                     <Column title="Dưới chuẩn độ 3" dataIndex="dow_height" key="dow_height" width={50} align="center" render={(value) => value.dow_height3} />
 
                 </ColumnGroup>
-                {/* <Column
-                    title="Action"
+                <Column
+                    width={50}
+                    title="Hành động"
                     key="action"
                     render={(_: any, record: any) => (
                         <Space size="middle">
-                            <a>Invite {record.lastName}</a>
-                            <a>Delete</a>
+                            <span
+                                onClick={() =>
+                                    navigate('edit', {
+                                        state: {
+                                            data: _,
+                                            type: 'edit',
+                                        },
+                                    })
+                                }
+                                style={{ marginLeft: 0, cursor: 'pointer' }}
+                                title="Sửa"
+                            >
+                                <EditOutlined />
+                            </span>
+                            <span
+                                onClick={() =>
+                                    deleteManyId(_?._id)
+                                }
+                                style={{ cursor: 'pointer', marginLeft: '1.5rem' }}
+                                title="Xoá"
+                            >
+                                <DeleteOutlined />
+                            </span>
                         </Space>
                     )}
-                /> */}
+                />
             </Table>
             <br></br>
 
             <b>Bé gái</b>
-            <Table dataSource={data?.filter((val:any)=>val.male == '1')} bordered>
+            <Table dataSource={data?.filter((val: any) => val.male == '1')} bordered>
                 <Column title="" key="age" render={(value) => `${convertAge(value.age)} ${convertAgeMonth(value.month_age)}`} width={150} align="center" />
                 <ColumnGroup title="CÂN NẶNG (KG)">
                     <Column title="Trên chuẩn độ 3" dataIndex="up_weight" key="up_weight" width={50} align="center" render={(value) => value.up_weight3} />
@@ -124,6 +181,38 @@ export default function Adult() {
                     <Column title="Dưới chuẩn độ 3" dataIndex="dow_height" key="dow_height" width={50} align="center" render={(value) => value.dow_height3} />
 
                 </ColumnGroup>
+                <Column
+                    width={50}
+                    title="Hành động"
+                    key="action"
+                    render={(_: any, record: any) => (
+                        <Space size="middle">
+                            <span
+                                onClick={() =>
+                                    navigate('edit', {
+                                        state: {
+                                            data: _,
+                                            type: 'edit',
+                                        },
+                                    })
+                                }
+                                style={{ marginLeft: 0, cursor: 'pointer' }}
+                                title="Sửa"
+                            >
+                                <EditOutlined />
+                            </span>
+                            <span
+                                onClick={() =>
+                                    deleteManyId(_?._id)
+                                }
+                                style={{ cursor: 'pointer', marginLeft: '1.5rem' }}
+                                title="Xoá"
+                            >
+                                <DeleteOutlined />
+                            </span>
+                        </Space>
+                    )}
+                />
                 {/* <Column
                     title="Action"
                     key="action"

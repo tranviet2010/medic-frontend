@@ -17,12 +17,16 @@ export default function EditAdult() {
   const dataInfoNavigate: any = state?.data
   const initialValues = {
     ...dataInfoNavigate,
-    status: convertStatusBoole(dataInfoNavigate?.status),
+    ...dataInfoNavigate?.up_weight,
+    ...dataInfoNavigate?.dow_weight,
+    ...dataInfoNavigate?.up_height,
+    ...dataInfoNavigate?.dow_height
   }
+  console.log("fsdfs",initialValues);
   return (
     <AddFormStyle>
       <Card
-        title="Sửa"
+        title="Sửa chỉ số"
         extra={
           < p onClick={() => navigate(configAdult.navigate)} style={{ cursor: 'pointer', fontSize: '16px', fontWeight: 600 }}>X</p>
         }
